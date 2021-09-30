@@ -24,12 +24,12 @@ public class ActiveLocation implements Runnable {
 	// ########## VARIABLE SET UP ##########\\
 
 	// X and Y based on encoder
-	private volatile double internalCurrentY = 0;
-	private volatile double internalCurrentX = 0;
+	private volatile double internalCurrentY = 0;//mm
+	private volatile double internalCurrentX = 0;//mm
 
 	// Used for sensor values
-	private double yEncoder = 0;
-	private double xEncoder = 0;
+	private double yEncoder = 0;//tick
+	private double xEncoder = 0;//tick
 	Angle angle = Angle.fromRadians(0);
 	Angle resetAngle = Angle.fromRadians(0);
 	Angle startAngle = Angle.fromRadians(0);

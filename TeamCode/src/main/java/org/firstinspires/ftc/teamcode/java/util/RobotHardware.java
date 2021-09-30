@@ -3,12 +3,9 @@ package org.firstinspires.ftc.teamcode.java.util;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
@@ -16,7 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 
 public class RobotHardware {
 
-    public BNO055IMU imu;
+    BNO055IMU imu;
 
     public DcMotorEx frontLeftMotor = null;
     public DcMotorEx frontRightMotor = null;
