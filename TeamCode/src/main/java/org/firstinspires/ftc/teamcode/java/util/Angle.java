@@ -1,19 +1,15 @@
 package org.firstinspires.ftc.teamcode.java.util;
 
-import java.util.Locale;
-
 import static org.firstinspires.ftc.teamcode.java.util.Constants.PI;
 import static org.firstinspires.ftc.teamcode.java.util.Constants.TAU;
+
+import java.util.Locale;
 
 public class Angle {
 	private final double angle;
 
 	private Angle(double angle) {
 		this.angle = angle;
-	}
-
-	public Angle makePositive() {
-		return new Angle(angle < 0 ? -angle : angle);
 	}
 
 	public static Angle fromDegrees(double angle, boolean reflectDirection) {
@@ -32,6 +28,10 @@ public class Angle {
 
 	public static Angle fromRadians(double angle) {
 		return fromRadians(angle, false);
+	}
+
+	public Angle makePositive() {
+		return new Angle(angle < 0 ? -angle : angle);
 	}
 
 	public double getAngleInRadians() {

@@ -5,6 +5,7 @@ import org.firstinspires.ftc.teamcode.java.util.Coordinate;
 import org.firstinspires.ftc.teamcode.java.util.MovementData;
 import org.firstinspires.ftc.teamcode.java.util.Vector2d;
 
+
 /**
  * The PathFinder finds the correct path the Robot Needs to Take to move to a different point.
  */
@@ -49,10 +50,6 @@ public class PathFinder implements Runnable {
 		this.activeLocation = activeLocation;
 	}
 
-	public Angle getNecessaryMovement() {
-		return aToMove;
-	}
-
 	public PathFinder(ActiveLocation activeLocation, MovementData destination) {
 		this.activeLocation = activeLocation;
 		this.destination = destination;
@@ -62,8 +59,8 @@ public class PathFinder implements Runnable {
 	 * Constructs PathFinder without an Angle
 	 *
 	 * @param activeLocation the Active Location of the Robot
-	 * @param x the destination x coordinate
-	 * @param y the destination y coordinate
+	 * @param x              the destination x coordinate
+	 * @param y              the destination y coordinate
 	 */
 	public PathFinder(ActiveLocation activeLocation, double x, double y) {
 		// TODO: Should the default angle be zero or the current angle?
@@ -74,12 +71,16 @@ public class PathFinder implements Runnable {
 	 * Constructs a PathFinder without Abstraction of MovementData
 	 *
 	 * @param activeLocation the Active Location of the Robot
-	 * @param x the destination x coordinate
-	 * @param y the destination y coordinate
-	 * @param angle the destination angle
+	 * @param x              the destination x coordinate
+	 * @param y              the destination y coordinate
+	 * @param angle          the destination angle
 	 */
 	public PathFinder(ActiveLocation activeLocation, double x, double y, Angle angle) {
 		this(activeLocation, new MovementData(x, y, angle));
+	}
+
+	public Angle getNecessaryMovement() {
+		return aToMove;
 	}
 
 	/**
@@ -103,6 +104,7 @@ public class PathFinder implements Runnable {
 	}
 
 	// TODO: Remove reliance on deprecated methods
+
 	/**
 	 * Updates the destination using only the x and y coordinates
 	 *
@@ -114,11 +116,12 @@ public class PathFinder implements Runnable {
 	}
 
 	// TODO: Add more consistent naming (rotation → Angle or alpha)
+
 	/**
 	 * Updates the destination
 	 *
-	 * @param x the destination x coordinate
-	 * @param y the destination y coordinate
+	 * @param x        the destination x coordinate
+	 * @param y        the destination y coordinate
 	 * @param rotation the destination angle
 	 */
 	public void setDestination(double x, double y, Angle rotation) {
@@ -129,7 +132,7 @@ public class PathFinder implements Runnable {
 	 * Updates the destination
 	 *
 	 * @param translation the destination vector
-	 * @param rotation the destination angle
+	 * @param rotation    the destination angle
 	 */
 	public void setDestination(Vector2d translation, Angle rotation) {
 		this.setDestination(new MovementData(translation, rotation));
@@ -186,7 +189,7 @@ public class PathFinder implements Runnable {
 
 	/**
 	 * Resumes the Thread
-	 *
+	 * <p>
 	 * TODO: Check if it works
 	 */
 	public void resume() {
@@ -195,7 +198,7 @@ public class PathFinder implements Runnable {
 
 	/**
 	 * Constantly Updates Encoder Path in PathFinder
-	 *
+	 * <p>
 	 * TODO: Check if keeping this in a thread is really necessary
 	 */
 	@Override

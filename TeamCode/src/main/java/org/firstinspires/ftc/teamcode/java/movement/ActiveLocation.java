@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.java.movement;
 
+import static org.firstinspires.ftc.teamcode.java.util.Constants.PI;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -7,7 +9,6 @@ import org.firstinspires.ftc.teamcode.java.util.Angle;
 import org.firstinspires.ftc.teamcode.java.util.MovementData;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-import static org.firstinspires.ftc.teamcode.java.util.Constants.*;
 
 /**
  * The ActiveLocation uses odometry to find the real-time location of the robot. This, along with a
@@ -16,34 +17,29 @@ import static org.firstinspires.ftc.teamcode.java.util.Constants.*;
  */
 public class ActiveLocation implements Runnable {
 
-	// Hardware setup
-	private final BNO055IMU imu;
-	private final DcMotor yDirectionEncoder;
-	private final DcMotor xDirectionEncoder;
-
-	// ########## VARIABLE SET UP ##########\\
-
-	// X and Y based on encoder
-	private volatile double internalCurrentY = 0;//mm
-	private volatile double internalCurrentX = 0;//mm
-
-	// Used for sensor values
-	private double yEncoder = 0;//tick
-	private double xEncoder = 0;//tick
-	Angle angle = Angle.fromRadians(0);
-	Angle resetAngle = Angle.fromRadians(0);
-	Angle startAngle = Angle.fromRadians(0);
-
-	// Field location
-	double fieldXPosition = 0;
-	double fieldYPosition = 0;
-
-	// For stopping the thread
-	private volatile boolean isRunning = true;
-
 	// Static values for calculations
 	final static double tickPerRotation = 8192;
 	final static double wheelCircumference = 90 * PI;
+	// Hardware setup
+	private final BNO055IMU imu;
+
+	// ########## VARIABLE SET UP ##########\\
+	private final DcMotor yDirectionEncoder;
+	private final DcMotor xDirectionEncoder;
+	Angle angle = Angle.fromRadians(0);
+	Angle resetAngle = Angle.fromRadians(0);
+	Angle startAngle = Angle.fromRadians(0);
+	// Field location
+	double fieldXPosition = 0;
+	double fieldYPosition = 0;
+	// X and Y based on encoder
+	private volatile double internalCurrentY = 0;//mm
+	private volatile double internalCurrentX = 0;//mm
+	// Used for sensor values
+	private double yEncoder = 0;//tick
+	private double xEncoder = 0;//tick
+	// For stopping the thread
+	private volatile boolean isRunning = true;
 
 	/**
 	 * Creates an Active Location Tracker for the Robot given by a {@link RobotHardware}
@@ -61,10 +57,10 @@ public class ActiveLocation implements Runnable {
 	 *
 	 * @param xDirectionEncoder the encoder set up in the X Direction
 	 * @param yDirectionEncoder the encoder set up in the Y Direction
-	 * @param gyroscope the imu (aka gyroscope) to determine the angle of the robot
+	 * @param gyroscope         the imu (aka gyroscope) to determine the angle of the robot
 	 */
 	public ActiveLocation(DcMotor xDirectionEncoder, DcMotor yDirectionEncoder,
-			BNO055IMU gyroscope) {
+	                      BNO055IMU gyroscope) {
 		this.yDirectionEncoder = yDirectionEncoder;
 		this.xDirectionEncoder = xDirectionEncoder;
 		this.imu = gyroscope;
@@ -72,7 +68,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Converts Ticks to Distance
-	 *
+	 * <p>
 	 * To calculate the distance, this function calculates the fraction of a total rotation (which
 	 * can be greater than 1 rotation) and multiplies it by the circumference, getting the linear
 	 * distance from the rotational fraction.
@@ -86,7 +82,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Converts Distance to Ticks
-	 *
+	 * <p>
 	 * To calculate the ticks traveled, the function determines the fraction of a rotation (using
 	 * distance and the circumference) and multiplies by the constant ticksPerRotation, returning
 	 * the total ticks.
@@ -103,8 +99,8 @@ public class ActiveLocation implements Runnable {
 	/**
 	 * Sets the start position
 	 *
-	 * @param startX The current X position mm
-	 * @param startY The current Y position mm
+	 * @param startX     The current X position mm
+	 * @param startY     The current Y position mm
 	 * @param startAngle The starting angle
 	 */
 	public void setStartPosition(double startX, double startY, Angle startAngle) {
@@ -118,7 +114,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Sets the start position
-	 * 
+	 *
 	 * @param location A movement data containing x and y position in mm and the angle in degrees
 	 */
 	public void setStartPosition(MovementData location) {
@@ -128,7 +124,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Updates Relevant Values for ActiveLocation calculations
-	 *
+	 * <p>
 	 * This function updates both the X and Y values of the Encoder's position, as well as the angle
 	 * of the robot using the built in IMU on the Rev Hub.
 	 */
@@ -144,7 +140,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Updates the current position of the Robot on the Field
-	 *
+	 * <p>
 	 * This function calculates the change in the robot's positional values, recalculating the
 	 * position of the robot.
 	 */
@@ -166,7 +162,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Gets the Robot's Position on the field on the Y-Axis
-	 * 
+	 *
 	 * @return Returns the robot's Y position on the field (mm)
 	 */
 	public double getFieldY() {
@@ -177,7 +173,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Gets the Robot's Position on the field on the X-Axis
-	 * 
+	 *
 	 * @return returns X position on the field (mm)
 	 */
 	public double getFieldX() {
@@ -189,7 +185,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Gets the Robot's Angle on the Field, relative to its initial angle
-	 * 
+	 *
 	 * @return returns angle
 	 */
 	public Angle getAngle() {
@@ -199,7 +195,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Get's the Robot's Angle on the field, in degrees
-	 * 
+	 *
 	 * @return returns angle in degrees
 	 */
 	public double getAngleInRadians() {
@@ -209,7 +205,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Get's the Robot's Angle on the field, in degrees
-	 * 
+	 *
 	 * @return returns angle in degrees
 	 */
 	public double getAngleInDegrees() {
@@ -234,7 +230,7 @@ public class ActiveLocation implements Runnable {
 
 	/**
 	 * Sets up and starts the thread running in the background
-	 *
+	 * <p>
 	 * This function determines what the class will do when set to run on an individual thread,
 	 * maintaining the current position of the robot so that autonomous can update and properly
 	 * calculate where the robot needs to go and when the robot reached said position.

@@ -37,6 +37,7 @@ public class AutoDrivingNew {
 	 * The Main Motors {@link DcMotor} on the Drive train to Allow Movement control
 	 */
 	private final DcMotorEx frontRight, frontLeft, backRight, backLeft;
+	public Telemetry telemetry;
 	/**
 	 * The default Maximum Velocity in case one is not passed when calling a specific movement
 	 */
@@ -51,18 +52,16 @@ public class AutoDrivingNew {
 	 */
 	private Angle defaultErrorAngle = Angle.fromDegrees(5);
 
-	public Telemetry telemetry;
-
 	/**
 	 * The Basic Constructor to Create a Basic Instance of AutoDriving
-	 * 
-	 * @param drivePid the forward and reverse {@link PidfController}
+	 *
+	 * @param drivePid  the forward and reverse {@link PidfController}
 	 * @param strafePid the left and right {@link PidfController}
-	 * @param turnPid the rotation {@link PidfController}
-	 * @param robot the {@link RobotHardware} initiated with a HardwareMap
+	 * @param turnPid   the rotation {@link PidfController}
+	 * @param robot     the {@link RobotHardware} initiated with a HardwareMap
 	 */
 	public AutoDrivingNew(PidfController drivePid, PidfController strafePid, PidfController turnPid,
-			RobotHardware robot, Telemetry telemetry) {
+	                      RobotHardware robot, Telemetry telemetry) {
 		// Connects PID Controllers with tuned variants
 		this.drivePid = drivePid;
 		this.strafePid = strafePid;
@@ -88,22 +87,22 @@ public class AutoDrivingNew {
 
 	/**
 	 * The Basic Constructor to Create a Basic Instance of AutoDriving
-	 * 
-	 * @param drivePid the forward and reverse {@link PidfController}
-	 * @param strafePid the left and right {@link PidfController}
-	 * @param turnPid the rotation {@link PidfController}
+	 *
+	 * @param drivePid        the forward and reverse {@link PidfController}
+	 * @param strafePid       the left and right {@link PidfController}
+	 * @param turnPid         the rotation {@link PidfController}
 	 * @param frontRightMotor the Front Right {@link DcMotor} on the Robot
-	 * @param frontLeftMotor the Front Left {@link DcMotor} on the Robot
-	 * @param backRightMotor the Back Right {@link DcMotor} on the Robot
-	 * @param backLeftMotor the Back Left {@link DcMotor} on the Robot
-	 * @param xAxisEncoder a {@link DcMotor} which is linked to the X Axis Encoder
-	 * @param yAxisEncoder a {@link DcMotor} which is linked to the Y Axis Encoder
-	 * @param gyroscope the imu (aka gyroscope) to determine the angle / orientation of the Robot
+	 * @param frontLeftMotor  the Front Left {@link DcMotor} on the Robot
+	 * @param backRightMotor  the Back Right {@link DcMotor} on the Robot
+	 * @param backLeftMotor   the Back Left {@link DcMotor} on the Robot
+	 * @param xAxisEncoder    a {@link DcMotor} which is linked to the X Axis Encoder
+	 * @param yAxisEncoder    a {@link DcMotor} which is linked to the Y Axis Encoder
+	 * @param gyroscope       the imu (aka gyroscope) to determine the angle / orientation of the Robot
 	 */
 	public AutoDrivingNew(PidfController drivePid, PidfController strafePid, PidfController turnPid,
-			DcMotor frontRightMotor, DcMotor frontLeftMotor, DcMotor backRightMotor,
-			DcMotor backLeftMotor, DcMotor xAxisEncoder, DcMotor yAxisEncoder,
-			BNO055IMU gyroscope) {
+	                      DcMotor frontRightMotor, DcMotor frontLeftMotor, DcMotor backRightMotor,
+	                      DcMotor backLeftMotor, DcMotor xAxisEncoder, DcMotor yAxisEncoder,
+	                      BNO055IMU gyroscope) {
 		// Connects PID Controllers with tuned variants
 		this.drivePid = drivePid;
 		this.strafePid = strafePid;
@@ -130,12 +129,39 @@ public class AutoDrivingNew {
 		return defaultMaxVelocity;
 	}
 
+	/**
+	 * Update the Default Maximum Velocity to a new user set value
+	 *
+	 * @param defaultMaxVelocity the new default maximum velocity
+	 */
+	public void setDefaultMaxVelocity(double defaultMaxVelocity) {
+		this.defaultMaxVelocity = defaultMaxVelocity;
+	}
+
 	public double getDefaultErrorX() {
 		return defaultErrorX;
 	}
 
+	/**
+	 * Update the Default X Error Range
+	 *
+	 * @param defaultErrorX the new x error range
+	 */
+	public void setDefaultErrorX(double defaultErrorX) {
+		this.defaultErrorX = defaultErrorX;
+	}
+
 	public double getDefaultErrorY() {
 		return defaultErrorY;
+	}
+
+	/**
+	 * Update the default Y Error Range
+	 *
+	 * @param defaultErrorY the new y error range
+	 */
+	public void setDefaultErrorY(double defaultErrorY) {
+		this.defaultErrorY = defaultErrorY;
 	}
 
 	public Angle getDefaultErrorAngle() {
@@ -143,8 +169,17 @@ public class AutoDrivingNew {
 	}
 
 	/**
+	 * Update the default Angle Error Range
+	 *
+	 * @param defaultErrorAngle the new angle error range
+	 */
+	public void setDefaultErrorAngle(Angle defaultErrorAngle) {
+		this.defaultErrorAngle = defaultErrorAngle;
+	}
+
+	/**
 	 * Set the start location for the Robot
-	 * 
+	 *
 	 * @param startLocation the new start location
 	 */
 	public void setStartLocation(MovementData startLocation) {
@@ -152,17 +187,8 @@ public class AutoDrivingNew {
 	}
 
 	/**
-	 * Update the Default Maximum Velocity to a new user set value
-	 * 
-	 * @param defaultMaxVelocity the new default maximum velocity
-	 */
-	public void setDefaultMaxVelocity(double defaultMaxVelocity) {
-		this.defaultMaxVelocity = defaultMaxVelocity;
-	}
-
-	/**
 	 * Update the default error ranges for all dimensions
-	 * 
+	 *
 	 * @param errorRanges the new error ranges to set as default
 	 */
 	public void setDefaultErrorRanges(MovementData errorRanges) {
@@ -172,38 +198,11 @@ public class AutoDrivingNew {
 	}
 
 	/**
-	 * Update the Default X Error Range
-	 * 
-	 * @param defaultErrorX the new x error range
-	 */
-	public void setDefaultErrorX(double defaultErrorX) {
-		this.defaultErrorX = defaultErrorX;
-	}
-
-	/**
-	 * Update the default Y Error Range
-	 * 
-	 * @param defaultErrorY the new y error range
-	 */
-	public void setDefaultErrorY(double defaultErrorY) {
-		this.defaultErrorY = defaultErrorY;
-	}
-
-	/**
-	 * Update the default Angle Error Range
-	 * 
-	 * @param defaultErrorAngle the new angle error range
-	 */
-	public void setDefaultErrorAngle(Angle defaultErrorAngle) {
-		this.defaultErrorAngle = defaultErrorAngle;
-	}
-
-	/**
 	 * Scales all wheel speeds to a scaling factor
 	 *
 	 * @param wheelSpeeds the speeds to scale
-	 * @param scaleTo the scaling factor
-	 * @param replaceAll whether or not to disregard the acutal values of the variables
+	 * @param scaleTo     the scaling factor
+	 * @param replaceAll  whether or not to disregard the acutal values of the variables
 	 */
 	private void scaleSpeeds(double[] wheelSpeeds, double scaleTo, boolean replaceAll) {
 		if (replaceAll) {
@@ -220,7 +219,7 @@ public class AutoDrivingNew {
 	/**
 	 * Scales all speeds down to a maximum velocity if any is above it
 	 *
-	 * @param wheelSpeeds the speeds to scale
+	 * @param wheelSpeeds     the speeds to scale
 	 * @param maximumVelocity the maximum velocity
 	 */
 	private void scaleSpeeds(double[] wheelSpeeds, double maximumVelocity) {
@@ -244,10 +243,10 @@ public class AutoDrivingNew {
 
 	/**
 	 * Finds the scalar maximum of an array of doubles
-	 *
+	 * <p>
 	 * Scalar Maximum means that only the magnitude, not the sign, will be taken into account in the
 	 * calculation
-	 * 
+	 *
 	 * @param values an array of values from which the maximum must be found
 	 * @return the maximum
 	 * @throws IllegalArgumentException protects against arrays with no elements
@@ -265,7 +264,7 @@ public class AutoDrivingNew {
 
 	/**
 	 * Finds the vector maximum of an array of doubles
-	 *
+	 * <p>
 	 * Vector Maximum means that both the direction (positive/negative) and the magnitude are taken
 	 * into account, where positive numbers are all greater than negative numbers.
 	 *
@@ -286,10 +285,10 @@ public class AutoDrivingNew {
 
 	/**
 	 * Checks if the Robot is within reasonable error to its goal position
-	 * 
-	 * @param goal the goal position for the robot to reach
-	 * @param errorX the reasonable error range for the Δx position with respect to the field
-	 * @param errorY the reasonable error range for the Δy position with respect to the field
+	 *
+	 * @param goal       the goal position for the robot to reach
+	 * @param errorX     the reasonable error range for the Δx position with respect to the field
+	 * @param errorY     the reasonable error range for the Δy position with respect to the field
 	 * @param errorAngle the reasonable error range for the Δθ position with respect to the
 	 * @return whether or not the robot is within a reasonable error range
 	 */
@@ -316,13 +315,13 @@ public class AutoDrivingNew {
 		return Math.abs(activeLocation.getFieldX() - goal.getX()) <= errorX
 				&& Math.abs(activeLocation.getFieldY() - goal.getY()) <= errorY
 				&& Math.abs(activeLocation.getAngleInRadians()
-						- goal.getAngleInRadians()) <= errorAngle.getAngleInRadians();
+				- goal.getAngleInRadians()) <= errorAngle.getAngleInRadians();
 	}
 
 	/**
 	 * Checks if the Robot is within reasonable error to its goal position
-	 * 
-	 * @param goal the goal position for the robot to reach
+	 *
+	 * @param goal       the goal position for the robot to reach
 	 * @param errorRange the reasonable established error range
 	 * @return whether or not the robot is within a reasonable error range
 	 */
@@ -333,7 +332,7 @@ public class AutoDrivingNew {
 	/**
 	 * Checks if the Robot is within reasonable error to its goal position, using the default as the
 	 * reasonable error
-	 * 
+	 *
 	 * @param goal the goal position for the robot to reach
 	 * @return whether or not the robot is within a reasonable error range
 	 */
@@ -343,15 +342,15 @@ public class AutoDrivingNew {
 
 	/**
 	 * Calculates Mecanum Wheel Drive Powers with PID
-	 * 
+	 *
 	 * @param maxVelocity the maximum velocity
-	 * @param xError the horizontal axis error
-	 * @param yError the vertical axis error
-	 * @param angleError the rotational error
+	 * @param xError      the horizontal axis error
+	 * @param yError      the vertical axis error
+	 * @param angleError  the rotational error
 	 * @return an array with the powers for the wheels
 	 */
 	public double[] calculateDrivePowers(double maxVelocity, double xError, double yError,
-			double angleError) {
+	                                     double angleError) {
 		double strafePower = strafePid.calculate(xError);
 		telemetry.addData("X Error", xError);
 		telemetry.addData("Strafe Power", strafePower);
@@ -373,9 +372,9 @@ public class AutoDrivingNew {
 
 	/**
 	 * Calculates Mecanum Wheel Drive Powers with PID using the default maximum velocity
-	 * 
-	 * @param xError the horizontal axis error
-	 * @param yError the vertical axis error
+	 *
+	 * @param xError     the horizontal axis error
+	 * @param yError     the vertical axis error
 	 * @param angleError the rotational error
 	 * @return an array with the powers for the wheels
 	 */
@@ -385,9 +384,9 @@ public class AutoDrivingNew {
 
 	/**
 	 * Calculates Mecanum Wheel Drive Powers with PID
-	 * 
+	 *
 	 * @param maxVelocity the maximum velocity
-	 * @param error the error values on all axes
+	 * @param error       the error values on all axes
 	 * @return an array with the powers for the wheels
 	 */
 	public double[] calculateDrivePowers(double maxVelocity, MovementData error) {
@@ -397,7 +396,7 @@ public class AutoDrivingNew {
 
 	/**
 	 * Calculates Mecanum Wheel Drive Powers with PID using the default maximum velocity
-	 * 
+	 *
 	 * @param error the error values on all axes
 	 * @return an array with the powers for the wheels
 	 */
@@ -407,7 +406,7 @@ public class AutoDrivingNew {
 
 	/**
 	 * Sets the motors to move at the given speeds
-	 * 
+	 *
 	 * @param speeds the speeds to move at
 	 */
 	public void setMotorPowers(double[] speeds) {
@@ -429,12 +428,12 @@ public class AutoDrivingNew {
 
 	/**
 	 * Moves the robot to a given point using a PID Loop
-	 * 
-	 * @param goal the position the robot should reach
+	 *
+	 * @param goal        the position the robot should reach
 	 * @param maxVelocity the maximum rotational movement of the wheel to reach
-	 * @param errorRange the error range of movement
+	 * @param errorRange  the error range of movement
 	 * @return false if the robot is already at the goal position, true if the robot has just
-	 *         reached the new position
+	 * reached the new position
 	 */
 	public boolean stopAt(MovementData goal, double maxVelocity, MovementData errorRange) {
 		if (arrivedAt(goal, errorRange))
@@ -450,28 +449,28 @@ public class AutoDrivingNew {
 
 	/**
 	 * Moves the robot to a given point using a PID Loop
-	 * 
-	 * @param goal the position the robot should reach
-	 * @param maxVelocity the maximum rotational movement of the wheel to reach
-	 * @param xErrorRange the error range for the horizontal direction
-	 * @param yErrorRange the error range for the vertical direction
+	 *
+	 * @param goal            the position the robot should reach
+	 * @param maxVelocity     the maximum rotational movement of the wheel to reach
+	 * @param xErrorRange     the error range for the horizontal direction
+	 * @param yErrorRange     the error range for the vertical direction
 	 * @param angleErrorRange the error range for the rotational axis
 	 * @return false if the robot is already at the goal position, true if the robot has just
-	 *         reached the new position
+	 * reached the new position
 	 */
 	public boolean stopAt(MovementData goal, double maxVelocity, double xErrorRange,
-			double yErrorRange, Angle angleErrorRange) {
+	                      double yErrorRange, Angle angleErrorRange) {
 		return stopAt(goal, maxVelocity,
 				new MovementData(xErrorRange, yErrorRange, angleErrorRange));
 	}
 
 	/**
 	 * Moves the robot to a given point using a PID Loop using the default errors
-	 * 
-	 * @param goal the position the robot should reach
+	 *
+	 * @param goal        the position the robot should reach
 	 * @param maxVelocity the maximum rotational movement of the wheel to reach
 	 * @return false if the robot is already at the goal position, true if the robot has just
-	 *         reached the new position
+	 * reached the new position
 	 */
 	public boolean stopAt(MovementData goal, double maxVelocity) {
 		return stopAt(goal, maxVelocity, defaultErrorX, defaultErrorY, defaultErrorAngle);
@@ -479,25 +478,25 @@ public class AutoDrivingNew {
 
 	/**
 	 * Moves the robot to a given point using a PID Loop using the default velocity
-	 * 
-	 * @param goal the position the robot should reach
-	 * @param xErrorRange the error range for the horizontal direction
-	 * @param yErrorRange the error range for the vertical direction
+	 *
+	 * @param goal            the position the robot should reach
+	 * @param xErrorRange     the error range for the horizontal direction
+	 * @param yErrorRange     the error range for the vertical direction
 	 * @param angleErrorRange the error range for the rotational axis
 	 * @return false if the robot is already at the goal position, true if the robot has just
-	 *         reached the new position
+	 * reached the new position
 	 */
 	public boolean stopAt(MovementData goal, double xErrorRange, double yErrorRange,
-			Angle angleErrorRange) {
+	                      Angle angleErrorRange) {
 		return stopAt(goal, defaultMaxVelocity, xErrorRange, yErrorRange, angleErrorRange);
 	}
 
 	/**
 	 * Moves the robot to a given point using a PID Loop using the default errors and velocity
-	 * 
+	 *
 	 * @param goal the position the robot should reach
 	 * @return false if the robot is already at the goal position, true if the robot has just
-	 *         reached the new position
+	 * reached the new position
 	 */
 	public boolean stopAt(MovementData goal) {
 		return stopAt(goal, defaultMaxVelocity);
@@ -505,16 +504,16 @@ public class AutoDrivingNew {
 
 	/**
 	 * Rotates the robot to a new {@link Angle}, maintaining the other field positions
-	 * 
-	 * @param angle the goal angle to reach
-	 * @param maxVelocity the maximum velocity to reach
-	 * @param xErrorRange the permitted error range for the horizontal axis
-	 * @param yErrorRange the permitted error range for the vertical axis
+	 *
+	 * @param angle           the goal angle to reach
+	 * @param maxVelocity     the maximum velocity to reach
+	 * @param xErrorRange     the permitted error range for the horizontal axis
+	 * @param yErrorRange     the permitted error range for the vertical axis
 	 * @param angleErrorRange the permitted error range for the angle
 	 * @return whether or not the robot needed to move
 	 */
 	public boolean rotateTo(Angle angle, double maxVelocity, double xErrorRange, double yErrorRange,
-			Angle angleErrorRange) {
+	                        Angle angleErrorRange) {
 		return stopAt(
 				new MovementData(activeLocation.getFieldX(), activeLocation.getFieldY(), angle),
 				maxVelocity, xErrorRange, yErrorRange, angleErrorRange);
@@ -522,9 +521,9 @@ public class AutoDrivingNew {
 
 	/**
 	 * Rotates the robot to a new {@link Angle}, maintaining the other field positions
-	 * 
-	 * @param angle the goal angle to reach
-	 * @param maxVelocity the maximum velocity to reach
+	 *
+	 * @param angle           the goal angle to reach
+	 * @param maxVelocity     the maximum velocity to reach
 	 * @param angleErrorRange the permitted error range for the angle
 	 * @return whether or not the robot needed to move
 	 */
@@ -534,8 +533,8 @@ public class AutoDrivingNew {
 
 	/**
 	 * Rotates the robot to a new {@link Angle}, maintaining the other field positions
-	 * 
-	 * @param angle the goal angle to reach
+	 *
+	 * @param angle       the goal angle to reach
 	 * @param maxVelocity the maximum velocity to reach
 	 * @return whether or not the robot needed to move
 	 */

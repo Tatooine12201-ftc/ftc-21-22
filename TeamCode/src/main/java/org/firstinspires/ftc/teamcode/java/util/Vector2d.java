@@ -60,24 +60,24 @@ public final class Vector2d {
 		return magnitude();
 	}
 
-	public Vector2d plus(Vector2d other){
-		return new  Vector2d(x + other.x, y + other.y);
+	public Vector2d plus(Vector2d other) {
+		return new Vector2d(x + other.x, y + other.y);
 	}
 
-	public Vector2d minus(Vector2d other){
+	public Vector2d minus(Vector2d other) {
 		return plus(other.unaryMinus());
 	}
 
 	public Vector2d unaryMinus() {
-		return new  Vector2d(-x, -y);
+		return new Vector2d(-x, -y);
 	}
 
 	public Vector2d times(double scalar) {
-		return new  Vector2d(x * scalar, y * scalar);
+		return new Vector2d(x * scalar, y * scalar);
 	}
 
 	public Vector2d div(double scalar) {
-		return new  Vector2d(x / scalar, y / scalar);
+		return new Vector2d(x / scalar, y / scalar);
 	}
 
 	@Override

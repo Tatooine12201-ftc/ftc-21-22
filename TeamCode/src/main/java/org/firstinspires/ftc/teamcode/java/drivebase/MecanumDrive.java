@@ -2,26 +2,11 @@ package org.firstinspires.ftc.teamcode.java.drivebase;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.teamcode.java.util.MovementData;
 import org.firstinspires.ftc.teamcode.java.util.Vector2d;
 
 public class MecanumDrive extends Drivetrain {
 
-	enum MotorPosition {
-		frontLeft(0),
-		frontRight(1),
-		backLeft(2),
-		backRight(3);
-
-		int position;
-
-		MotorPosition(int position) {
-			this.position = position;
-		}
-	}
-
 	DcMotor[] motors;
-
 	private double angleOffset = 0;
 
 	public MecanumDrive(DcMotor frontLeft, DcMotor frontRight, DcMotor backLeft, DcMotor backRight) {
@@ -31,6 +16,15 @@ public class MecanumDrive extends Drivetrain {
 	public MecanumDrive(DcMotor frontLeft, DcMotor frontRight, DcMotor backLeft, DcMotor backRight, double angleOffset) {
 		this(frontLeft, frontRight, backLeft, backRight);
 		this.angleOffset = angleOffset;
+	}
+
+	public static double[] calculateDrivePowers(double driveSpeed, double strafeSpeed, double turnSpeed) {
+		return new double[]{
+				driveSpeed + strafeSpeed + turnSpeed,
+				driveSpeed - strafeSpeed - turnSpeed,
+				driveSpeed - strafeSpeed + turnSpeed,
+				driveSpeed + strafeSpeed - turnSpeed
+		};
 	}
 
 	public void setAngleOffset(double angleOffset) {
@@ -63,25 +57,15 @@ public class MecanumDrive extends Drivetrain {
 		);
 	}
 
-	public static double[] calculateDrivePowers(double driveSpeed, double strafeSpeed, double turnSpeed) {
-		return new double[] {
-				driveSpeed + strafeSpeed + turnSpeed,
-				driveSpeed - strafeSpeed - turnSpeed,
-				driveSpeed - strafeSpeed + turnSpeed,
-				driveSpeed + strafeSpeed - turnSpeed
-		};
-	}
-
 	public void drive(double driveSpeed, double strafeSpeed, double turnSpeed, boolean quadraticGrowth) {
 		if (quadraticGrowth) {
-			driveSpeed  = squareInput(driveSpeed);
+			driveSpeed = squareInput(driveSpeed);
 			strafeSpeed = squareInput(strafeSpeed);
-			turnSpeed   = squareInput(turnSpeed);
+			turnSpeed = squareInput(turnSpeed);
 		}
 
 		drive(driveSpeed, strafeSpeed, turnSpeed);
 	}
-
 
 	public void driveFieldOriented(double driveSpeed, double strafeSpeed, double turnSpeed, double gyroAngle) {
 		Vector2d translation = new Vector2d(strafeSpeed, driveSpeed);
@@ -118,11 +102,24 @@ public class MecanumDrive extends Drivetrain {
 
 	public void driveFieldOriented(double driveSpeed, double strafeSpeed, double turnSpeed, double gyroAngle, boolean quadraticGrowth) {
 		if (quadraticGrowth) {
-			driveSpeed  = squareInput(driveSpeed);
+			driveSpeed = squareInput(driveSpeed);
 			strafeSpeed = squareInput(strafeSpeed);
-			turnSpeed   = squareInput(turnSpeed);
+			turnSpeed = squareInput(turnSpeed);
 		}
 
 		driveFieldOriented(driveSpeed, strafeSpeed, turnSpeed, gyroAngle);
+	}
+
+	enum MotorPosition {
+		frontLeft(0),
+		frontRight(1),
+		backLeft(2),
+		backRight(3);
+
+		int position;
+
+		MotorPosition(int position) {
+			this.position = position;
+		}
 	}
 }

@@ -2,14 +2,24 @@ package org.firstinspires.ftc.teamcode.java.drivebase;
 
 public abstract class Drivetrain {
 
-	protected static final double PI4 = Math.PI / 4;
-
 	public static final double defaultMaxSpeed = 1.0;
-
+	protected static final double PI4 = Math.PI / 4;
 	double maxSpeed = defaultMaxSpeed;
 
 	public Drivetrain() {
 
+	}
+
+	/**
+	 * Squares Inputs but maintains direction
+	 * <p>
+	 * This is useful to implement non-linear increase for joystick powers.
+	 *
+	 * @param input the value to be squared
+	 * @return the value squared, maintaining the direction
+	 */
+	protected static double squareInput(double input) {
+		return (input < 0 ? -input : input) * input;
 	}
 
 	public void setMaxSpeed(double maxSpeed) {
@@ -22,7 +32,7 @@ public abstract class Drivetrain {
 	 * Scales all wheel speeds to a scaling factor
 	 *
 	 * @param wheelSpeeds the speeds to scale
-	 * @param scaleTo the scaling factor
+	 * @param scaleTo     the scaling factor
 	 */
 	protected void scaleSpeeds(double[] wheelSpeeds, double scaleTo) {
 		double maxMagnitude = scalarMax(wheelSpeeds);
@@ -52,9 +62,10 @@ public abstract class Drivetrain {
 
 	/**
 	 * Finds the scalar maximum of an array of doubles
-	 *
+	 * <p>
 	 * Scalar Maximum means that only the magnitude, not the sign, will be taken into account
 	 * in the calculation
+	 *
 	 * @param values an array of values from which the maximum must be found
 	 * @return the maximum
 	 * @throws IllegalArgumentException protects against arrays with no elements
@@ -74,7 +85,7 @@ public abstract class Drivetrain {
 
 	/**
 	 * Finds the vector maximum of an array of doubles
-	 *
+	 * <p>
 	 * Vector Maximum means that both the direction (positive/negative) and the magnitude are taken
 	 * into account, where positive numbers are all greater than negative numbers.
 	 *
@@ -93,17 +104,5 @@ public abstract class Drivetrain {
 		}
 
 		return vectorMax;
-	}
-
-	/**
-	 * Squares Inputs but maintains direction
-	 *
-	 * This is useful to implement non-linear increase for joystick powers.
-	 *
-	 * @param input the value to be squared
-	 * @return the value squared, maintaining the direction
-	 */
-	protected double squareInput(double input) {
-		return (input < 0 ? -input : input) * input;
 	}
 }

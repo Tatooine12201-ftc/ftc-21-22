@@ -39,11 +39,11 @@ public class Vector3d {
 		return magnitude();
 	}
 
-	public Vector3d plus(Vector3d other){
-		return new  Vector3d(x + other.x, y + other.y, z + other.z);
+	public Vector3d plus(Vector3d other) {
+		return new Vector3d(x + other.x, y + other.y, z + other.z);
 	}
 
-	public Vector3d minus(Vector3d other){
+	public Vector3d minus(Vector3d other) {
 		return plus(other.unaryMinus());
 	}
 
