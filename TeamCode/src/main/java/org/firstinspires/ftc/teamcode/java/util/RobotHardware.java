@@ -5,6 +5,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -24,11 +25,6 @@ public class RobotHardware {
 	 */
 	public void init(HardwareMap hardwareMap) {
 		this.hardwareMap = hardwareMap;
-
-		leftMotor = hardwareMap.get(DcMotorEx.class, "left_Motor");
-		rightMotor = hardwareMap.get(DcMotorEx.class, "right_Motor");
-
-
 		BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
 		parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
 		parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
@@ -36,11 +32,21 @@ public class RobotHardware {
 		parameters.loggingEnabled = true;
 		parameters.loggingTag = "IMU";
 		parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
-
 		// Parts in hardware map
 		imu = hardwareMap.get(BNO055IMU.class, "imu");
 		imu.initialize(parameters);
 		imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
 
+		leftMotor = hardwareMap.get(DcMotorEx.class, "left_Motor");
+		rightMotor = hardwareMap.get(DcMotorEx.class, "right_Motor");
+
+
+		leftMotor.setPower(0);
+		rightMotor.setPower(0);
+		leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+		rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+
+		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
 }
