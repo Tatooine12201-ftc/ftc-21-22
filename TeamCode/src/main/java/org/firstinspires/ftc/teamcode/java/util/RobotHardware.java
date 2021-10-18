@@ -46,6 +46,8 @@ public class RobotHardware {
 
 		carusella = hardwareMap.get(DcMotor.class, "carusella");
 
+		carusella = hardwareMap.get(DcMotor.class, "carusella");
+
 
 		intake.setPower(0);
 		leftMotor.setPower(0);
@@ -54,11 +56,13 @@ public class RobotHardware {
 
 		leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+		carusella.setDirection(DcMotorSimple.Direction.FORWARD);
 		intake.setDirection(DcMotorSimple.Direction.FORWARD);
 		carusella.setDirection(DcMotorSimple.Direction.FORWARD);
 
 		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		carusella.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		carusella.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
