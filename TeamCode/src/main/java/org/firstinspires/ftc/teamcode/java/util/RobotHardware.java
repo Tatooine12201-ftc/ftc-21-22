@@ -14,7 +14,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 
 public class RobotHardware {
 	public HardwareMap hardwareMap;
-
+	//DRIVE motors
+	public DcMotor carusella = null;
 	public DcMotorEx leftMotor = null;
 	public DcMotorEx rightMotor = null;
 	public DcMotorEx intake = null;
@@ -38,19 +39,27 @@ public class RobotHardware {
 		imu.initialize(parameters);
 		imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
 
+		// config
 		leftMotor = hardwareMap.get(DcMotorEx.class, "left_Motor");
 		rightMotor = hardwareMap.get(DcMotorEx.class, "right_Motor");
-		intake= hardwareMap.get(DcMotorEx.class,"intake");
+		intake = hardwareMap.get(DcMotorEx.class,"intake");
+
+		carusella = hardwareMap.get(DcMotor.class, "carusella");
+
 
 		intake.setPower(0);
 		leftMotor.setPower(0);
 		rightMotor.setPower(0);
+		carusella.setPower(0);
+
 		leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		intake.setDirection(DcMotorSimple.Direction.FORWARD);
+		carusella.setDirection(DcMotorSimple.Direction.FORWARD);
 
 		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		carusella.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
 }
