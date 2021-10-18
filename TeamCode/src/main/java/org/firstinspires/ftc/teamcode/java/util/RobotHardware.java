@@ -19,6 +19,9 @@ public class RobotHardware {
 	public DcMotorEx leftMotor = null;
 	public DcMotorEx rightMotor = null;
 	public DcMotorEx intake = null;
+	public DcMotorEx elevater = null;
+
+
 	public BNO055IMU imu = null;
 	/**
 	 * Sets up the HardwareMap
@@ -40,12 +43,10 @@ public class RobotHardware {
 		imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
 
 		// config
-		leftMotor = hardwareMap.get(DcMotorEx.class, "left_Motor");
-		rightMotor = hardwareMap.get(DcMotorEx.class, "right_Motor");
-		intake = hardwareMap.get(DcMotorEx.class,"intake");
-
-		carusella = hardwareMap.get(DcMotor.class, "carusella");
-
+		leftMotor = hardwareMap.get(DcMotorEx.class, "Left_Motor");
+		rightMotor = hardwareMap.get(DcMotorEx.class, "Right_Motor");
+		intake = hardwareMap.get(DcMotorEx.class,"Intake");
+		elevater = hardwareMap.get(DcMotorEx.class, "Elevetor");
 		carusella = hardwareMap.get(DcMotor.class, "carusella");
 
 
@@ -53,17 +54,20 @@ public class RobotHardware {
 		leftMotor.setPower(0);
 		rightMotor.setPower(0);
 		carusella.setPower(0);
+		elevater.setPower(0);
 
 		leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		carusella.setDirection(DcMotorSimple.Direction.FORWARD);
 		intake.setDirection(DcMotorSimple.Direction.FORWARD);
 		carusella.setDirection(DcMotorSimple.Direction.FORWARD);
+		elevater.setDirection(DcMotorSimple.Direction.FORWARD);
 
 		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		carusella.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		carusella.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		elevater.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
 }
