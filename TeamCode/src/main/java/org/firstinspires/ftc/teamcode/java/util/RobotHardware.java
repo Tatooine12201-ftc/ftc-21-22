@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
@@ -15,11 +14,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 public class RobotHardware {
 	public HardwareMap hardwareMap;
 	//DRIVE motors
-	public DcMotor carusella = null;
+	public DcMotor carousel = null;
 	public DcMotorEx leftMotor = null;
 	public DcMotorEx rightMotor = null;
 	public DcMotorEx intake = null;
-	public DcMotorEx elevater = null;
+	public DcMotorEx elevator = null;
 
 
 	public BNO055IMU imu = null;
@@ -46,28 +45,27 @@ public class RobotHardware {
 		leftMotor = hardwareMap.get(DcMotorEx.class, "Left_Motor");
 		rightMotor = hardwareMap.get(DcMotorEx.class, "Right_Motor");
 		intake = hardwareMap.get(DcMotorEx.class,"Intake");
-		elevater = hardwareMap.get(DcMotorEx.class, "Elevetor");
-		carusella = hardwareMap.get(DcMotor.class, "carusella");
+		elevator = hardwareMap.get(DcMotorEx.class, "Elevator");
+		carousel = hardwareMap.get(DcMotor.class, "Carousel");
 
 
 		intake.setPower(0);
 		leftMotor.setPower(0);
 		rightMotor.setPower(0);
-		carusella.setPower(0);
-		elevater.setPower(0);
+		carousel.setPower(0);
+		elevator.setPower(0);
 
 		leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-		carusella.setDirection(DcMotorSimple.Direction.FORWARD);
+		carousel.setDirection(DcMotorSimple.Direction.FORWARD);
 		intake.setDirection(DcMotorSimple.Direction.FORWARD);
-		carusella.setDirection(DcMotorSimple.Direction.FORWARD);
-		elevater.setDirection(DcMotorSimple.Direction.FORWARD);
+		carousel.setDirection(DcMotorSimple.Direction.FORWARD);
+		elevator.setDirection(DcMotorSimple.Direction.FORWARD);
 
 		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-		carusella.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-		carusella.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-		elevater.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		carousel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		elevator.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
 }
