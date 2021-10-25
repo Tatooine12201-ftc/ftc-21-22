@@ -18,7 +18,6 @@ public class Intake extends RobotHardware
 
     public void intake(double speed)
     {
-
         intake.setPower(intake_speed);
     }
 
@@ -27,11 +26,13 @@ public class Intake extends RobotHardware
         intake.setPower(outtake_speed);
     }
 
-    public void stop(){
+    public void stop()
+    {
         intake(0.0);
     }
 
-    public void debug(){
+    public void debug()
+    {
 
     }
 }
