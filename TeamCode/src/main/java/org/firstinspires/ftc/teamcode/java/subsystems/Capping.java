@@ -34,13 +34,25 @@ public class Capping
         this.cappingServo = robot.cappingServo;
     }
 
+    /**
+     * This function sets the servo to open
+     */
+
     public void open() {
         cappingServo.setPosition(OPEN_ARM);
     }
 
+    /**
+     * This function sets the servo to close
+     */
+
     public void close() {
         cappingServo.setPosition(CLOSED_ARM);
     }
+
+    /**
+     * This function changes the position of the arm
+     */
 
     public void changeGrabbingDirection() {
         if (isOpen){
@@ -71,6 +83,7 @@ public class Capping
      * this function turns off the lift
      */
     public void stop() {
+        cappingServo.setPosition(CLOSED_ARM);
         cappingLift.setPower(0);
     }
 
