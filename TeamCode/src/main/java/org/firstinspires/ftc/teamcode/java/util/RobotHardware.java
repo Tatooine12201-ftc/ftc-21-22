@@ -48,6 +48,7 @@ public class RobotHardware {
 		elevator = hardwareMap.get(DcMotorEx.class, "Elevator");
 		carousel = hardwareMap.get(DcMotor.class, "Carousel");
 
+		elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 		intake.setPower(0);
 		leftMotor.setPower(0);
