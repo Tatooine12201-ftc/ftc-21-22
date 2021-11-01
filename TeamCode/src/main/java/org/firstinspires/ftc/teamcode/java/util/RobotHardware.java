@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
@@ -20,6 +21,7 @@ public class RobotHardware {
 	public DcMotorEx intake = null;
 	public DcMotorEx elevator = null;
 
+	public Servo intakeServo = null;
 
 	public BNO055IMU imu = null;
 	/**
@@ -48,6 +50,8 @@ public class RobotHardware {
 		elevator = hardwareMap.get(DcMotorEx.class, "Elevator");
 		carousel = hardwareMap.get(DcMotor.class, "Carousel");
 
+		intkeServo = hardwareMap.get(Servo.class,"intkeServo");
+
 		elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 		intake.setPower(0);
@@ -55,6 +59,8 @@ public class RobotHardware {
 		rightMotor.setPower(0);
 		carousel.setPower(0);
 		elevator.setPower(0);
+
+		intkeServo.setPosition(0);
 
 		leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
