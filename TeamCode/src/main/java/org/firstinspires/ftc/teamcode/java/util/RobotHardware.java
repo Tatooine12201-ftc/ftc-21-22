@@ -50,7 +50,7 @@ public class RobotHardware {
 		elevator = hardwareMap.get(DcMotorEx.class, "Elevator");
 		carousel = hardwareMap.get(DcMotor.class, "Carousel");
 
-		intkeServo = hardwareMap.get(Servo.class,"intkeServo");
+		intakeServo = hardwareMap.get(Servo.class,"intakeServo");
 
 		elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -60,7 +60,7 @@ public class RobotHardware {
 		carousel.setPower(0);
 		elevator.setPower(0);
 
-		intkeServo.setPosition(0);
+		intakeServo.setPosition(0);
 
 		leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 		rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
