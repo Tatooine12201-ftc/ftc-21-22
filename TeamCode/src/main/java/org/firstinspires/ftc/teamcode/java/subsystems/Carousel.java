@@ -21,6 +21,10 @@ public class Carousel {
 		this.carousel = robot.carousel;
 	}
 
+	public Carousel(DcMotor carousel) {
+		this.carousel = carousel;
+	}
+
 	/**
 	 * this function stops the carousel
 	 */
