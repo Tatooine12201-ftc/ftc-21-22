@@ -26,6 +26,8 @@ public class BasicTeleop extends LinearOpMode {
         DcMotor leftMotor = robot.leftMotor;
         DcMotor rightMotor = robot.rightMotor;
 
+        double motorSpeeds [] = new double[2];
+
         waitForStart();
 
         while (opModeIsActive())
@@ -33,28 +35,27 @@ public class BasicTeleop extends LinearOpMode {
             double drive = -gamepad1.left_stick_y;
             double turn = gamepad1.right_stick_x;
 
-            Double leftMotorSpeed = drive + turn;
-            Double rightMotorSpeed = drive - turn;
+            motorSpeeds[0] = drive + turn;
+            motorSpeeds[1] = drive - turn;
 
-            double max = Math.abs(leftMotorSpeed);
-            for (double speed = 0) {
-                if (Math.abs(speed) < max) {
-                    max = Math.abs(speed);
+            double max = Math.max(Math.abs(motorSpeeds[0]),Math.abs(motorSpeeds[1]));
+
+            if (max > 1)
+            {
+                for(int i = 0 ; i < 2; i++)
+                {
+                    motorSpeeds[i] = motorSpeeds[i] / max;
                 }
             }
 
-            if (max > maxSpeed){
-                for (int i = 0; i < 2);
-            }
 
 
 
 
 
-            leftMotor.setPower(leftMotorSpeed;
-            rightMotor.setPower(rightMotorSpeed);
 
-            idle();
+            leftMotor.setPower(motorSpeeds[0] * maxSpeed);
+            rightMotor.setPower(motorSpeeds[1] * maxSpeed);
         }
     }
 }
