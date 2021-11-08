@@ -53,9 +53,7 @@ public class Intake
     /**
      * this function turns off the intake
      */
-    public void stop() {
-        intakeServo.setPosition(CLOSED);
-        intake.setPower(0);
-    }
+    public void stop() { intake.setPower(0); }
 
+    public void debug() {}
 }
