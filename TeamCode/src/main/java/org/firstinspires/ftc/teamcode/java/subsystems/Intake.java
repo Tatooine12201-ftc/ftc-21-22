@@ -30,6 +30,10 @@ public class Intake
         this.intakeServo = robot.intakeServo;
     }
 
+    public Intake(DcMotor intake) {
+        this.intake = intake;
+    }
+
     /**
      * this function intakes
      */

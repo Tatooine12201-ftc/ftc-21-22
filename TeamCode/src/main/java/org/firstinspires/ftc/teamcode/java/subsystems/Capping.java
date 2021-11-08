@@ -14,6 +14,8 @@ public class Capping
     private final DcMotor cappingLift;
     private final Servo cappingServo;
 
+    DcMotor cappingLift = new lift;
+
 
     private static final double LIFTING_SPEED = 1;
     private static final double LOWERING_SPEED = -1;
@@ -32,6 +34,11 @@ public class Capping
         this.robot = robot;
         this.lift = robot.elevator;
         this.cappingServo = robot.cappingServo;
+    }
+
+    public CappingLift(DcMotor cappingLift) {
+        this.cappingLift = cappingLift;
+        this.lift = cappingLift.elevator;
     }
 
     /**

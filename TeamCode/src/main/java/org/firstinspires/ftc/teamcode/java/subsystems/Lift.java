@@ -24,19 +24,29 @@ public class Lift
 		this.lift = robot.elevator;
 	}
 
+	public Lift(DcMotor lift) {
+		this.lift = lift;
+	}
+
 	/**
 	 * this function lifts
 	 */
-	public void lift() { lift.setPower(LIFTING_SPEED); }
+	public void lift() {
+		lift.setPower(LIFTING_SPEED);
+	}
 
 	/**
 	 * this function outtakes
 	 */
-	public void lower() { lift.setPower(LOWERING_SPEED); }
+	public void lower() {
+		lift.setPower(LOWERING_SPEED);
+	}
 
 	/**
 	 * this function turns off the lift
 	 */
-	public void stop() { lift.setPower(0); }
+	public void stop() {
+		lift.setPower(0);
+	}
 
 }
