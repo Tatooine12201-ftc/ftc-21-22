@@ -10,10 +10,10 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 public class Intake
 {
     RobotHardware robot;
-    private DcMotorEx intake;
+    private final DcMotor intake;
 
-    public static double intake_speed = 1;
-    public static double outtake_speed = -1;
+    private static final double INTAKE_SPEED = 1;
+    private static final double OUTTAKE_SPEED = -1;
 
     /**
      * this function creates anew intake
@@ -27,17 +27,16 @@ public class Intake
     /**
      * this function intakes
      */
-    public void intake() { intake.setPower(intake_speed); }
+    public void intake() { intake.setPower(INTAKE_SPEED); }
 
     /**
      * this function outtakes
      */
-    public void outtake() { intake.setPower(outtake_speed); }
+    public void outtake() { intake.setPower(OUTTAKE_SPEED); }
 
     /**
      * this function turns off the intake
      */
     public void stop() { intake.setPower(0); }
 
-    public void debug() {}
 }
