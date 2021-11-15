@@ -24,10 +24,20 @@ public class Lift
 		this.lift = robot.elevator;
 	}
 
+	/**
+	 * this function creates a alift from a motor
+	 * @param lift the motor
+	 */
 	public Lift(DcMotor lift) {
 		this.lift = lift;
 	}
 
+	/**
+	 * this function creates a alift from a motor
+	 * @param lift the motor
+	 * @param liftingSpeed the lift speed
+	 * @param loweringSpeed the lower lift speed
+	 */
 	public Lift(DcMotor lift, double liftingSpeed, double loweringSpeed) {
 		new Lift(lift);
 		LOWERING_SPEED = loweringSpeed;

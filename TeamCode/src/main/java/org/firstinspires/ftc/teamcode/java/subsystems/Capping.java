@@ -37,16 +37,25 @@ public class Capping
 
     private boolean isOpen = false;
 
+    /**
+     * this function is opening the servo
+     */
     public void open() {
         cappingServo.setPosition(OPEN_ARM);
         isOpen = true;
     }
 
+    /**
+     * this function is closing the servo
+     */
     public void close() {
         cappingServo.setPosition(CLOSED_ARM);
         isOpen = false;
     }
 
+    /**
+     * this function is opening or closing the servo if open it will close
+     */
     public void changePosition(){
         if (isOpen){
             close();
@@ -57,16 +66,25 @@ public class Capping
         }
     }
 
+    /**
+     * rises the capping lift
+     */
     public void lift() {
         close();
         lift.lift();
     }
 
+    /**
+     * lower the capping lift
+     */
     public void  lower(){
         open();
         lift.lower();
     }
 
+    /**
+     * stop the capping lift
+     */
     public void stop(){
         close();
         lift.stop();
