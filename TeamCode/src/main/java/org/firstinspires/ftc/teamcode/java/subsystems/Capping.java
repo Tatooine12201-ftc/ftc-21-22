@@ -8,14 +8,26 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
+import java.util.Calendar;
+import java.util.List;
+
 public class Capping
 {
     RobotHardware robot;
-    private final DcMotor cappingLift;
+
     private final Servo cappingServo;
+    private final Lift lift;
 
-    DcMotor cappingLift = new lift;
+    public Capping(RobotHardware robot) {
+        this.robot = robot;
+        cappingServo = robot.cappingServo;
+        this.lift = new Lift(robot.cappingLift);
+    }
 
+    public Capping(DcMotor lift, Servo cappingServo) {
+        this.lift = new Lift(lift);
+        this.cappingServo = cappingServo;
+    }
 
     private static final double LIFTING_SPEED = 1;
     private static final double LOWERING_SPEED = -1;
@@ -25,73 +37,39 @@ public class Capping
 
     private boolean isOpen = false;
 
-
-    /**
-     * this function creates anew lift
-     * @param robot the robot hardware
-     */
-    public CappingLift(RobotHardware robot) {
-        this.robot = robot;
-        this.lift = robot.elevator;
-        this.cappingServo = robot.cappingServo;
-    }
-
-    public CappingLift(DcMotor cappingLift) {
-        this.cappingLift = cappingLift;
-        this.lift = cappingLift.elevator;
-    }
-
-    /**
-     * This function sets the servo to open
-     */
-
     public void open() {
         cappingServo.setPosition(OPEN_ARM);
+        isOpen = true;
     }
-
-    /**
-     * This function sets the servo to close
-     */
 
     public void close() {
         cappingServo.setPosition(CLOSED_ARM);
+        isOpen = false;
     }
 
-    /**
-     * This function changes the position of the arm
-     */
-
-    public void changeGrabbingDirection() {
+    public void changePosition(){
         if (isOpen){
-            cappingServo = cappingServo.close();
-            isOpen = false;
-        }else {
-            cappingServo = cappingServo.open();
-            isOpen = true;
+            close();
+        }
+        else
+        {
+            open();
         }
     }
 
-    /**
-     * this function lifts
-     */
-    public void liftcapping() {
-        cappingLift.setPower(LIFTING_SPEED);
-
+    public void lift() {
+        close();
+        lift.lift();
     }
 
-    /**
-     * this function outtakes
-     */
-    public void lowercapping() {
-        cappingLift.setPower(LOWERING_SPEED);
+    public void  lower(){
+        open();
+        lift.lower();
     }
 
-    /**
-     * this function turns off the lift
-     */
-    public void stop() {
-        cappingServo.setPosition(CLOSED_ARM);
-        cappingLift.setPower(0);
+    public void stop(){
+        close();
+        lift.stop();
     }
 
 }

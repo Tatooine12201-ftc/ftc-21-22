@@ -10,10 +10,10 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 public class Lift
 {
 	RobotHardware robot;
-	private final DcMotor lift;
+	private DcMotor lift;
 
-	private static final double LIFTING_SPEED = 1;
-	private static final double LOWERING_SPEED = -1;
+	private static double LIFTING_SPEED = 1;
+	private static double LOWERING_SPEED = -1;
 
 	/**
 	 * this function creates anew lift
@@ -26,6 +26,12 @@ public class Lift
 
 	public Lift(DcMotor lift) {
 		this.lift = lift;
+	}
+
+	public Lift(DcMotor lift, double liftingSpeed, double loweringSpeed) {
+		new Lift(lift);
+		LOWERING_SPEED = loweringSpeed;
+		LIFTING_SPEED = liftingSpeed;
 	}
 
 	/**
