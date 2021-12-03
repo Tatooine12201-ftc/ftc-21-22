@@ -43,7 +43,7 @@ public class BasicTeleop extends LinearOpMode {
 
         Lift lift = new Lift(elevaterMotor);
         Carousel carousel = new Carousel(carouselMotor);
-        Intake intake =new Intake(intakeMotor);
+        Intake intake =new Intake(intakeMotor, intakeServo);
         Capping capping = new Capping(carouselMotor, cappingServo);
 
 

@@ -30,8 +30,10 @@ public class Intake
         this.intakeServo = robot.intakeServo;
     }
 
-    public Intake(DcMotor intake) {
+    public Intake(DcMotor intake,Servo intakeServo) {
         this.intake = intake;
+        this.intakeServo = intakeServo;
+
     }
 
     /**
