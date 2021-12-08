@@ -57,19 +57,13 @@ public class BasicTeleop extends LinearOpMode {
 
              // correlating gamepad sticks to driving states
             double drive = -gamepad1.left_stick_y;
-            double turn = 0;
-            if(gamepad1.right_trigger > 0)
-            {
-                turn = gamepad1.right_trigger;
-            }else if (gamepad1.right_trigger > 0)
-            {
-                turn = -gamepad1.right_trigger;
-            }
+            double turn = gamepad1.right_trigger - gamepad1.left_trigger;
 
 
             if(gamepad2.b){
                 capping.changePosition();
             }
+
             if(gamepad2.y)
             {
                 carousel.spin();
@@ -77,18 +71,20 @@ public class BasicTeleop extends LinearOpMode {
             else if(gamepad2.back){
                 carousel.changeDirection();
             }
+
             if(gamepad2.dpad_down){
                 lift.lower();
             }else if (gamepad2.dpad_down && gamepad2.start)
             {
                 capping.lower();
             }
-            if (gamepad2.dpad_up){
+            else if (gamepad2.dpad_up){
                 lift.lift();
             }
             else if (gamepad2.dpad_up && gamepad2.start){
                 capping.lift();
             }
+
             if (gamepad2.right_bumper){
                 intake.intake();
             }

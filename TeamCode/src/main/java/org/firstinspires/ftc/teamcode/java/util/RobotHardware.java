@@ -67,7 +67,7 @@ public class RobotHardware {
 		cappingServo.setPosition(0);
 
 		leftMotor.setDirection(DcMotor.Direction.FORWARD);
-		rightMotor.setDirection(DcMotor.Direction.FORWARD);
+		rightMotor.setDirection(DcMotor.Direction.REVERSE);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
 		intake.setDirection(DcMotor.Direction.FORWARD);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
