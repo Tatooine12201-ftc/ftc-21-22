@@ -26,13 +26,12 @@ public class BasicTeleop extends LinearOpMode {
 
 
     @Override
-    public void runOpMode() throws InterruptedException
-    {
+    public void runOpMode() throws InterruptedException {
 
 
         robot.init(hardwareMap);
 
-         // defining motors
+        // defining motors
         DcMotor leftMotor = robot.leftMotor;
         DcMotor rightMotor = robot.rightMotor;
         DcMotor elevaterMotor = robot.elevator;
@@ -43,8 +42,11 @@ public class BasicTeleop extends LinearOpMode {
 
         Lift lift = new Lift(elevaterMotor);
         Carousel carousel = new Carousel(carouselMotor);
-        Intake intake =new Intake(intakeMotor, intakeServo);
+        Intake intake = new Intake(intakeMotor, intakeServo);
         Capping capping = new Capping(carouselMotor, cappingServo);
+
+        boolean isSecondLift = false;
+
 
 
         // creating an array for the motor speeds
@@ -52,80 +54,74 @@ public class BasicTeleop extends LinearOpMode {
 
         waitForStart();
 
-        while (opModeIsActive())
-        {
+        while (opModeIsActive()) {
 
-             // correlating gamepad sticks to driving states
-            double drive = -gamepad1.left_stick_y;
-            double turn = 0;
-            if(gamepad1.right_trigger > 0)
-            {
-                turn = gamepad1.right_trigger;
-            }else if (gamepad1.right_trigger > 0)
-            {
-                turn = -gamepad1.right_trigger;
-            }
+            // correlating gamepad sticks to driving states
+            double drive = gamepad1.left_stick_y;
+            double turn = gamepad1.right_trigger-gamepad1.left_trigger;
 
-
-            if(gamepad2.b){
-                capping.changePosition();
-            }
-            if(gamepad2.y)
-            {
-                carousel.spin();
-            }
-            else if(gamepad2.back){
-                carousel.changeDirection();
-            }
-            if(gamepad2.dpad_down){
-                lift.lower();
-            }else if (gamepad2.dpad_down && gamepad2.start)
-            {
-                capping.lower();
-            }
-            if (gamepad2.dpad_up){
-                lift.lift();
-            }
-            else if (gamepad2.dpad_up && gamepad2.start){
-                capping.lift();
-            }
-            if (gamepad2.right_bumper){
-                intake.intake();
-            }
-            else if (gamepad2.left_bumper){
-                intake.outtake();
-            }
-
-
-
-             // creating array for motor speeds that takes a value from the different driving states
-            motorSpeeds[0] = drive + turn;
-            motorSpeeds[1] = drive - turn;
-
-
-             // defining max speed for motors
-            double max = Math.max(Math.abs(motorSpeeds[0]),Math.abs(motorSpeeds[1]));
-
-
-
-             // creating a stable range for the motor max speed
-            if (max > 1)
-            {
-                for(int i = 0 ; i < 2; i++)
-                {
-                    motorSpeeds[i] = motorSpeeds[i] / max;
+                if (gamepad2.b) {
+                    capping.changePosition();
                 }
+                if (gamepad2.y) {
+                    carousel.spin();
+                } else if (gamepad2.back) {
+                    carousel.changeDirection();
+                }
+                if (gamepad2.dpad_down && !isSecondLift) {
+                    lift.lower();
+
+                }
+                else if (gamepad2.dpad_down && isSecondLift){
+                    capping.lower();
+                }
+                if (gamepad2.dpad_up && !isSecondLift) {
+                    lift.lift();
+
+                }
+                else if (gamepad2.dpad_up && isSecondLift){
+                    capping.lift();
+                }
+                if (gamepad2.start && isSecondLift){
+                    isSecondLift = false;
+                }
+                else if ( gamepad2.start && isSecondLift == false){
+                isSecondLift = true;
+                }
+                if (gamepad2.right_bumper) {
+                    intake.intake();
+                } else if (gamepad2.left_bumper) {
+                    intake.outtake();
+                }
+
+
+                // creating array for motor speeds that takes a value from the different driving states
+                motorSpeeds[0] = drive + turn;
+                motorSpeeds[1] = drive - turn;
+
+
+                // defining max speed for motors
+                double max = Math.max(Math.abs(motorSpeeds[0]), Math.abs(motorSpeeds[1]));
+
+
+                // creating a stable range for the motor max speed
+                if (max > 1) {
+                    for (int i = 0; i < 2; i++) {
+                        motorSpeeds[i] = motorSpeeds[i] / max;
+                    }
+                }
+
+
+                // setting power to the motors based the values of the speeds from the
+                // gamepad and max speed
+                leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
+                rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
+                capping.stop();
+                lift.stop();
+                intake.stop();
+                carousel.stop();
             }
-
-
-             // setting power to the motors based the values of the speeds from the
-             // gamepad and max speed
-            leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
-            rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
-            capping.stop();
-            lift.stop();
-            intake.stop();
-            carousel.stop();
         }
     }
-}
+
+
