@@ -40,6 +40,7 @@ public class BasicTeleop extends LinearOpMode {
         Servo intakeServo = robot.intakeServo;
         Servo cappingServo = robot.cappingServo;
 
+
         Lift lift = new Lift(elevaterMotor);
         Carousel carousel = new Carousel(carouselMotor);
         Intake intake = new Intake(intakeMotor, intakeServo);
@@ -55,6 +56,7 @@ public class BasicTeleop extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
+
 
             // correlating gamepad sticks to driving states
             double drive = gamepad1.left_stick_y;
