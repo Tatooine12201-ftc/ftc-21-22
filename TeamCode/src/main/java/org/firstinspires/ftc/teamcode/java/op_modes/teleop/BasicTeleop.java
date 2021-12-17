@@ -58,7 +58,7 @@ public class BasicTeleop extends LinearOpMode {
 
             // correlating gamepad sticks to driving states
             double drive = gamepad1.left_stick_y;
-            double turn = gamepad1.right_trigger-gamepad1.left_trigger;
+            double turn = gamepad1.right_trigger - gamepad1.left_trigger;
 
                 if (gamepad2.b) {
                     capping.changePosition();
