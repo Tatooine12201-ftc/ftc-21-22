@@ -48,14 +48,19 @@ public class RobotHardware {
 		// config
 		leftMotor = hardwareMap.get(DcMotorEx.class, "Left_Motor");
 		rightMotor = hardwareMap.get(DcMotorEx.class, "Right_Motor");
+
 		intake = hardwareMap.get(DcMotorEx.class,"Intake");
 		elevator = hardwareMap.get(DcMotorEx.class, "Elevator");
 		carousel = hardwareMap.get(DcMotor.class, "Carousel");
 		cappingLift = hardwareMap.get(DcMotor.class, "Capping Lift");
+
 		intakeServo = hardwareMap.get(Servo.class,"intakeServo");
 		cappingServo = hardwareMap.get(Servo.class, "cappingServo");
 		elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		cappingLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+		leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+		rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 		intake.setPower(0);
 		leftMotor.setPower(0);
@@ -67,7 +72,7 @@ public class RobotHardware {
 		cappingServo.setPosition(0);
 
 		leftMotor.setDirection(DcMotor.Direction.FORWARD);
-		rightMotor.setDirection(DcMotor.Direction.FORWARD);
+		rightMotor.setDirection(DcMotor.Direction.REVERSE);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
 		intake.setDirection(DcMotor.Direction.FORWARD);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
