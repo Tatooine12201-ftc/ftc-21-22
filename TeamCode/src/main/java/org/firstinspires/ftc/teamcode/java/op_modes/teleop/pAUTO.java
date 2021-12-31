@@ -112,8 +112,9 @@ public class pAUTO extends LinearOpMode {
 //		gyroTurn(TURN_SPEED,90);
 		gyroDrive(DRIVE_SPEED, 1000, 0.0);    // Drive FWD 48 MMes
 		gyroTurn( TURN_SPEED, -90.0);         // Turn  CCW to -45 Degrees
-		gyroHold( TURN_SPEED, -45.0, 5);    // Hold -45 Deg heading for a 1/2 second
-		gyroDrive(DRIVE_SPEED, 100, 0);  // Drive FWD 12 MMes at 45 degrees
+		gyroHold( TURN_SPEED, -45.0, 5);
+		gyroTurn(TURN_SPEED,0);
+		gyroDrive(DRIVE_SPEED, 1000, 0);  // Drive FWD 12 MMes at 45 degrees
 //		gyroTurn( TURN_SPEED,  45.0);         // Turn  CW  to  45 Degrees
 //		gyroHold( TURN_SPEED,  45.0, 0.5);    // Hold  45 Deg heading for a 1/2 second
 //		gyroTurn( TURN_SPEED,   0.0);         // Turn  CW  to   0 Degrees
