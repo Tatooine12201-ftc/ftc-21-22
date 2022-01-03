@@ -1,17 +1,18 @@
 package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ElapsedTime;
+        import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+        import com.qualcomm.robotcore.hardware.DcMotor;
+        import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
+        import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name="test Drive By encoder", group="auto")
-public class basicAuto extends LinearOpMode {
 
-    /* Declare OpMode members. */
+@Autonomous(name="blueCAuto", group="auto")
+public class blueCAuto extends LinearOpMode{
+
+        /* Declare OpMode members. */
     RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -21,7 +22,7 @@ public class basicAuto extends LinearOpMode {
     static final double     WHEEL_CIRCUMFERENCE         = (  WHEEL_DIAMETER_MM * Math.PI) ;
 
 
-    static final double     DRIVE_SPEED             = 1;
+    static final double     DRIVE_SPEED             = 0.7;
     static final double     TURN_SPEED              = 0.5;
 
     @Override
@@ -50,12 +51,13 @@ public class basicAuto extends LinearOpMode {
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
-        waitForStart();
+
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED,  400,  400, 5.0);// S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED, 280,-280, 2.0);
+      // S1: Forward 47 Inches with 5 Sec timeout
+        encoderDrive(TURN_SPEED, -280,280, 2.0);
+        encoderDrive(DRIVE_SPEED,  1219.2,  1219.2, 15.0);
         //encoderDrive(TURN_SPEED,   12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
         //encoderDrive(DRIVE_SPEED, -2, -2, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
@@ -127,3 +129,4 @@ public class basicAuto extends LinearOpMode {
         }
     }
 }
+
