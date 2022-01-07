@@ -44,20 +44,33 @@ public class Lift
 		LIFTING_SPEED = liftingSpeed;
 	}
 
+	public void init()
+	{
+		while (lift.getCurrentPosition() > 150) {
+			lift.setPower(LOWERING_SPEED);
+		}
+	}
 	/**
 	 * this function lifts
 	 */
 	public void lift() {
-		lift.setPower(LIFTING_SPEED);
+		if (lift.getCurrentPosition() < 1660) {
+			lift.setPower(LIFTING_SPEED);
+		}
 	}
 
 	/**
 	 * this function outtakes
 	 */
 	public void lower() {
-		lift.setPower(LOWERING_SPEED);
+		if (lift.getCurrentPosition() > 150) {
+			lift.setPower(LOWERING_SPEED);
+		}
 	}
 
+	public int getPose(){
+		return lift.getCurrentPosition();
+	};
 	/**
 	 * this function turns off the lift
 	 */

@@ -27,7 +27,7 @@ public class AutoDrive {
 	public static final double     DRIVE_SPEED             = 0.7;     // Nominal speed for better accuracy.
 	public static final double     TURN_SPEED              = 0.5;     // Nominal half speed for better accuracy.
 
-	private static final double     HEADING_THRESHOLD       = 0.5 ;      // As tight as we can make it with an integer gyro
+	private static final double     HEADING_THRESHOLD       = 0.5;      // As tight as we can make it with an integer gyro
 	private static final double     P_TURN_COEFF            = 0.015;     // Larger is more responsive, but also less stable
 	private static final double     P_DRIVE_COEFF           = 0.000009;     // Larger is more responsive, but also less stable
 
@@ -171,7 +171,7 @@ public class AutoDrive {
 	 * @param PCoeff    Proportional Gain coefficient
 	 * @return
 	 */
-	boolean onHeading(double speed, double angle, double PCoeff) {
+	private boolean onHeading(double speed, double angle, double PCoeff) {
 		double   error ;
 		double   steer ;
 		boolean  onTarget = false ;
@@ -211,7 +211,7 @@ public class AutoDrive {
 	 * @return  error angle: Degrees in the range +/- 180. Centered on the this's frame of reference
 	 *          +ve error means the this should turn LEFT (CCW) to reduce error.
 	 */
-	public double getError(double targetAngle) {
+	private double getError(double targetAngle) {
 
 		double thisError;
 
@@ -228,11 +228,11 @@ public class AutoDrive {
 	 * @param PCoeff  Proportional Gain Coefficient
 	 * @return
 	 */
-	public double getSteer(double error, double PCoeff) {
+	private double getSteer(double error, double PCoeff) {
 		return Range.clip(error * PCoeff, -1, 1);
 	}
 
-	double getHeading() {
+	private double getHeading() {
 		return this.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
 	}
 

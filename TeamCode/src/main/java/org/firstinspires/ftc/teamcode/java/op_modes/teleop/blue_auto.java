@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -8,14 +9,15 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name="blue", group="auto")
-
+@Autonomous(name = "tune", group = "auto")
+@Disabled
 public class blue_auto extends LinearOpMode {
-	RobotHardware robot   = new RobotHardware();
+	RobotHardware robot = new RobotHardware();
 	// Use a Pushbot's hardware
 	private ElapsedTime runtime = new ElapsedTime();
+
 	@Override
-	public void runOpMode(){
+	public void runOpMode() {
 
 		robot.init(hardwareMap);
 
@@ -30,7 +32,7 @@ public class blue_auto extends LinearOpMode {
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
 		waitForStart();
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,1000,0);
-
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1000, 0);
 	}
 }

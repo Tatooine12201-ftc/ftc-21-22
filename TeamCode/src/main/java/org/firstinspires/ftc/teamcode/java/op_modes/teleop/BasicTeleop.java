@@ -59,7 +59,7 @@ public class BasicTeleop extends LinearOpMode {
 
 
             // correlating gamepad sticks to driving states
-            double drive = gamepad1.left_stick_y;
+            double drive = -gamepad1.left_stick_y;
             double turn = gamepad1.right_trigger - gamepad1.left_trigger;
 
                 if (gamepad2.b) {
@@ -83,6 +83,13 @@ public class BasicTeleop extends LinearOpMode {
                 }
                 else if (gamepad2.dpad_up && isSecondLift){
                     capping.lift();
+                }
+                else if (!gamepad2.dpad_up && !gamepad2.dpad_down)
+                {
+                    while(lift.getPose() < 150 && opModeIsActive())
+                    {
+                        lift.lift();
+                    }
                 }
                 if (gamepad2.start && isSecondLift){
                     isSecondLift = false;
@@ -113,7 +120,8 @@ public class BasicTeleop extends LinearOpMode {
                     }
                 }
 
-
+                telemetry.addData("ticks", robot.elevator.getCurrentPosition());
+                telemetry.update();
                 // setting power to the motors based the values of the speeds from the
                 // gamepad and max speed
                 leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
