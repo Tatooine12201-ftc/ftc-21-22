@@ -16,21 +16,21 @@ public class Capping
     RobotHardware robot;
 
     private final Servo cappingServo;
-    private final Lift lift;
+    private final DcMotor arm;
 
     public Capping(RobotHardware robot) {
         this.robot = robot;
         cappingServo = robot.cappingServo;
-        this.lift = new Lift(robot.cappingLift);
+        this.arm    = (robot.cappingLift);
     }
 
-    public Capping(DcMotor lift, Servo cappingServo) {
-        this.lift = new Lift(lift);
+    public Capping(DcMotor arm, Servo cappingServo) {
+        this.arm = (arm);
         this.cappingServo = cappingServo;
     }
 
-    private static final double LIFTING_SPEED = 1;
-    private static final double LOWERING_SPEED = -1;
+    private static final double LIFTING_SPEED = 0.1;
+    private static final double LOWERING_SPEED = -0.1;
 
     private static final double OPEN_ARM = 1;
     private static final double CLOSED_ARM = 0;
@@ -69,25 +69,28 @@ public class Capping
     /**
      * rises the capping lift
      */
-    public void lift() {
+    public void lift(double power) {
         close();
-        lift.lift();
+        if(arm.getCurrentPosition() < 500){
+            arm.setPower(LIFTING_SPEED *power) ;
+        }
     }
 
     /**
      * lower the capping lift
      */
-    public void  lower(){
-        open();
-        lift.lower();
+    public void  lower(double power){
+        if(arm.getCurrentPosition() > 100){
+            arm.setPower(LOWERING_SPEED * power);
+        }
     }
 
     /**
      * stop the capping lift
      */
-    public void stop(){
+    public void stop() {
         close();
-        lift.stop();
+        arm.setPower(0);
     }
 
-}
+    }
