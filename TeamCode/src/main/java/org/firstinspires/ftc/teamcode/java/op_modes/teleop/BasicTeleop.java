@@ -98,6 +98,8 @@ public class BasicTeleop extends LinearOpMode {
                 isSecondLift = true;
                 }
                 if (gamepad2.right_bumper) {
+                    telemetry.addData("aaaaaaa",'A');
+                    telemetry.update();
                     intake.intake();
                 } else if (gamepad2.left_bumper) {
                     intake.outtake();
