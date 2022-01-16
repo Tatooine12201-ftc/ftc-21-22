@@ -74,15 +74,10 @@ public class BasicTeleop extends LinearOpMode {
                     lift.lower();
 
                 }
-                else if (gamepad2.dpad_down && isSecondLift){
-                    capping.lower();
-                }
+
                 if (gamepad2.dpad_up && !isSecondLift) {
                     lift.lift();
 
-                }
-                else if (gamepad2.dpad_up && isSecondLift){
-                    capping.lift();
                 }
                 else if (!gamepad2.dpad_up && !gamepad2.dpad_down)
                 {
@@ -128,6 +123,13 @@ public class BasicTeleop extends LinearOpMode {
                 // gamepad and max speed
                 leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
                 rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
+                if(gamepad2.left_trigger >0 && gamepad2.right_trigger == 0) {
+                    capping.lift(gamepad2.left_trigger);
+                }
+                else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0)
+                {
+                    capping.lower(gamepad2.right_trigger;
+                }
                 capping.stop();
                 lift.stop();
                 intake.stop();

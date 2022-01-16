@@ -32,7 +32,7 @@ public class blue_auto extends LinearOpMode {
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
 		waitForStart();
-		//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
+		//ad.gyro.0.000..00Turn(AutoDrive.TURN_SPEED,90);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1000, 0);
 	}
 }

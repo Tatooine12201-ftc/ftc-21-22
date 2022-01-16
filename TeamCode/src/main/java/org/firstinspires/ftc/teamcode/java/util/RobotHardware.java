@@ -61,7 +61,7 @@ public class RobotHardware {
 
 		leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
+		cappingLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		intake.setPower(0);
 		leftMotor.setPower(0);
 		rightMotor.setPower(0);
