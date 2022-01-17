@@ -40,7 +40,7 @@ public class redFar  extends LinearOpMode {
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
 		Lift lift = new Lift(robot.elevator);
-		Intake intake = new Intake(robot.intake, robot.intakeServo);
+		Intake intake = new Intake(robot.intake);
 		waitForStart();
 		lift.init();
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,150,0);

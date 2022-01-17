@@ -54,7 +54,7 @@ public class Lift
 	 * this function lifts
 	 */
 	public void lift() {
-		if (lift.getCurrentPosition() < 1660) {
+		if (lift.getCurrentPosition() < 1200) {
 			lift.setPower(LIFTING_SPEED);
 		}
 	}

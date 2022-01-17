@@ -40,7 +40,7 @@ public class redClose  extends LinearOpMode {
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
 		Lift lift = new Lift(robot.elevator);
-		Intake intake = new Intake(robot.intake, robot.intakeServo);
+		Intake intake = new Intake(robot.intake);
 		waitForStart();
 		lift.init();
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,150,0);
@@ -61,7 +61,7 @@ public class redClose  extends LinearOpMode {
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
 		while (runtime.seconds() < 2)
 		{
-			lift.l...........................ower();
+			lift.lower();
 		}
 		ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,90);

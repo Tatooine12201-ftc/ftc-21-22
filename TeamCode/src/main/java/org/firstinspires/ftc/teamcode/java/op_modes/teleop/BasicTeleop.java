@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
+//import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
@@ -37,18 +37,14 @@ public class BasicTeleop extends LinearOpMode {
         DcMotor elevaterMotor = robot.elevator;
         DcMotor carouselMotor = robot.carousel;
         DcMotor intakeMotor = robot.intake;
-        Servo intakeServo = robot.intakeServo;
+        //sServo intakeServo = robot.intakeServo;
         Servo cappingServo = robot.cappingServo;
 
 
         Lift lift = new Lift(elevaterMotor);
         Carousel carousel = new Carousel(carouselMotor);
-        Intake intake = new Intake(intakeMotor, intakeServo);
-        Capping capping = new Capping(carouselMotor, cappingServo);
-
-        boolean isSecondLift = false;
-
-
+        Intake intake = new Intake(intakeMotor);
+        //Capping capping = new Capping(carouselMotor, cappingServo);
 
         // creating an array for the motor speeds
         double[] motorSpeeds = new double[2];
@@ -63,21 +59,18 @@ public class BasicTeleop extends LinearOpMode {
             double turn = gamepad1.right_trigger - gamepad1.left_trigger;
 
                 if (gamepad2.b) {
-                    capping.changePosition();
+                    //capping.changePosition();
                 }
                 if (gamepad2.y) {
                     carousel.spin();
                 } else if (gamepad2.back) {
                     carousel.changeDirection();
                 }
-                if (gamepad2.dpad_down && !isSecondLift) {
+                if (gamepad2.dpad_down ) {
                     lift.lower();
-
                 }
-
-                if (gamepad2.dpad_up && !isSecondLift) {
+                else if (gamepad2.dpad_up) {
                     lift.lift();
-
                 }
                 else if (!gamepad2.dpad_up && !gamepad2.dpad_down)
                 {
@@ -86,12 +79,7 @@ public class BasicTeleop extends LinearOpMode {
                         lift.lift();
                     }
                 }
-                if (gamepad2.start && isSecondLift){
-                    isSecondLift = false;
-                }
-                else if ( gamepad2.start && isSecondLift == false){
-                isSecondLift = true;
-                }
+
                 if (gamepad2.right_bumper) {
                     telemetry.addData("aaaaaaa",'A');
                     telemetry.update();
@@ -124,13 +112,13 @@ public class BasicTeleop extends LinearOpMode {
                 leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
                 rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
                 if(gamepad2.left_trigger >0 && gamepad2.right_trigger == 0) {
-                    capping.lift(gamepad2.left_trigger);
+                   // capping.lift(gamepad2.left_trigger);
                 }
                 else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0)
                 {
-                    capping.lower(gamepad2.right_trigger;
+                   // capping.lower(gamepad2.right_trigger);
                 }
-                capping.stop();
+              //  capping.stop();
                 lift.stop();
                 intake.stop();
                 carousel.stop();

@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
 @Autonomous(name = "tune", group = "auto")
-@Disabled
+
 public class blue_auto extends LinearOpMode {
 	RobotHardware robot = new RobotHardware();
 	// Use a Pushbot's hardware
@@ -32,7 +32,10 @@ public class blue_auto extends LinearOpMode {
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
 		waitForStart();
-		//ad.gyro.0.000..00Turn(AutoDrive.TURN_SPEED,90);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1000, 0);
+		robot.rightMotor.setPower(0.7);
+	//	robot.leftMotor.setPower(0.7);
+		sleep(3000);
 	}
 }

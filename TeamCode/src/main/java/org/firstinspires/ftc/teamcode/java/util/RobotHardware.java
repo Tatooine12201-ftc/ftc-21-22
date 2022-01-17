@@ -22,8 +22,8 @@ public class RobotHardware {
 	public DcMotorEx rightMotor = null;
 	public DcMotorEx intake = null;
 	public DcMotorEx elevator = null;
-	public DcMotor cappingLift = null;
-	public Servo intakeServo = null;
+
+	public Servo armServo = null;
 	public Servo cappingServo =null;
 	public BNO055IMU imu = null;
 	/**
@@ -52,38 +52,38 @@ public class RobotHardware {
 		intake = hardwareMap.get(DcMotorEx.class,"Intake");
 		elevator = hardwareMap.get(DcMotorEx.class, "Elevator");
 		carousel = hardwareMap.get(DcMotor.class, "Carousel");
-		cappingLift = hardwareMap.get(DcMotor.class, "Capping Lift");
+		//cappingLift = hardwareMap.get(DcMotor.class, "Capping Lift");
 
-		intakeServo = hardwareMap.get(Servo.class,"intakeServo");
+		armServo = hardwareMap.get(Servo.class,"armServo");
 		cappingServo = hardwareMap.get(Servo.class, "cappingServo");
 		elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		cappingLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+		//cappingLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 		leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		cappingLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+		//cappingLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		intake.setPower(0);
 		leftMotor.setPower(0);
 		rightMotor.setPower(0);
 		carousel.setPower(0);
 		elevator.setPower(0);
-		cappingLift.setPower(0);
-		intakeServo.setPosition(0);
-		cappingServo.setPosition(0);
+		//cappingLift.setPower(0);
+		armServo.setPosition(1);
+		cappingServo.setPosition(1);
 
 		leftMotor.setDirection(DcMotor.Direction.FORWARD);
 		rightMotor.setDirection(DcMotor.Direction.REVERSE);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
-		intake.setDirection(DcMotor.Direction.FORWARD);
+		intake.setDirection(DcMotor.Direction.REVERSE);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
 		elevator.setDirection(DcMotor.Direction.FORWARD);
-		cappingLift.setDirection(DcMotor.Direction.FORWARD);
+		//cappingLift.setDirection(DcMotor.Direction.FORWARD);
 
 		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		carousel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		elevator.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-		cappingLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+		//cappingLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
 }

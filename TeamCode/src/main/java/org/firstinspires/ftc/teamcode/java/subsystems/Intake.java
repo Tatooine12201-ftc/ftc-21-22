@@ -12,7 +12,7 @@ public class Intake
 {
     RobotHardware robot;
     private final DcMotor intake;
-    private final Servo intakeServo;
+
     private static final double INTAKE_SPEED = 1;
     private static final double OUTTAKE_SPEED = -1;
 
@@ -27,12 +27,12 @@ public class Intake
     public Intake(RobotHardware robot) {
         this.robot = robot;
         this.intake = robot.intake;
-        this.intakeServo = robot.intakeServo;
+
     }
 
-    public Intake(DcMotor intake,Servo intakeServo) {
+    public Intake(DcMotor intake ) {
         this.intake = intake;
-        this.intakeServo = intakeServo;
+
 
     }
 
@@ -40,7 +40,7 @@ public class Intake
      * this function intakes
      */
     public void intake() {
-        intakeServo.setPosition(CLOSED);
+
         intake.setPower(INTAKE_SPEED);
     }
 
@@ -48,7 +48,7 @@ public class Intake
      * this function outtakes
      */
     public void outtake() {
-        intakeServo.setPosition(OPEN);
+
         intake.setPower(OUTTAKE_SPEED);
     }
 
