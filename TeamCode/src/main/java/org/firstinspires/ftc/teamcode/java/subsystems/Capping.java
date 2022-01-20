@@ -69,6 +69,9 @@ public class Capping
             isBeay = true;
             open();
         }
+        else{
+            isBeay = true;
+        }
     }
 
     /**

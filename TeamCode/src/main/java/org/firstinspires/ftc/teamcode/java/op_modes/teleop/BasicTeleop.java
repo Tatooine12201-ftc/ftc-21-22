@@ -2,11 +2,13 @@ package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
 //import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
@@ -37,14 +39,14 @@ public class BasicTeleop extends LinearOpMode {
         DcMotor elevaterMotor = robot.elevator;
         DcMotor carouselMotor = robot.carousel;
         DcMotor intakeMotor = robot.intake;
-        //sServo intakeServo = robot.intakeServo;
+        CRServo arm = robot.armServo;
         Servo cappingServo = robot.cappingServo;
 
 
         Lift lift = new Lift(elevaterMotor);
         Carousel carousel = new Carousel(carouselMotor);
         Intake intake = new Intake(intakeMotor);
-        //Capping capping = new Capping(carouselMotor, cappingServo);
+        Capping capping = new Capping(arm, cappingServo);
 
         // creating an array for the motor speeds
         double[] motorSpeeds = new double[2];
@@ -80,6 +82,7 @@ public class BasicTeleop extends LinearOpMode {
                     }
                 }
 
+
                 if (gamepad2.right_bumper) {
                     telemetry.addData("aaaaaaa",'A');
                     telemetry.update();
@@ -112,13 +115,13 @@ public class BasicTeleop extends LinearOpMode {
                 leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
                 rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
                 if(gamepad2.left_trigger >0 && gamepad2.right_trigger == 0) {
-                   // capping.lift(gamepad2.left_trigger);
+                   capping.lift(gamepad2.left_trigger);
                 }
                 else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0)
                 {
-                   // capping.lower(gamepad2.right_trigger);
+                   capping.lower(gamepad2.right_trigger);
                 }
-              //  capping.stop();
+                capping.stop();
                 lift.stop();
                 intake.stop();
                 carousel.stop();
