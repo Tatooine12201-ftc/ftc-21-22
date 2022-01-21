@@ -72,13 +72,7 @@ public class BasicTeleop extends LinearOpMode {
                 else if (gamepad2.dpad_up) {
                     lift.lift();
                 }
-                else if (!gamepad2.dpad_up && !gamepad2.dpad_down)
-                {
-                    while(lift.getPose() < 150 && opModeIsActive())
-                    {
-                        lift.lift();
-                    }
-                }
+
 
                 if (gamepad2.right_bumper) {
                     telemetry.addData("aaaaaaa",'A');
@@ -119,6 +113,9 @@ public class BasicTeleop extends LinearOpMode {
                    // capping.lower(gamepad2.right_trigger);
                 }
               //  capping.stop();
+                telemetry.addData("speeed",leftMotor.getPowerFloat());
+                telemetry.addData("speeed",rightMotor.getPowerFloat());
+
                 lift.stop();
                 intake.stop();
                 carousel.stop();
