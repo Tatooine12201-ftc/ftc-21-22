@@ -28,8 +28,8 @@ public class AutoDrive {
 	public static final double     TURN_SPEED              = 0.5;     // Nominal half speed for better accuracy.
 
 	private static final double     HEADING_THRESHOLD       = 0.5;      // As tight as we can make it with an integer gyro
-	private static final double     P_TURN_COEFF            = 0.002;     // Larger is more responsive, but also less stable
-	private static final double     P_DRIVE_COEFF           = 0.0025;     // Larger is more responsive, but also less stable
+	private static final double     P_TURN_COEFF            = 0.004;     // Larger is more responsive, but also less stable
+	private static final double     P_DRIVE_COEFF           = 0.0028;     // Larger is more responsive, but also less stable
 
 	public AutoDrive(DcMotor leftMotor, DcMotor rightMotor, BNO055IMU imu, Telemetry telemetry)
 	{
