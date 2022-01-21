@@ -83,7 +83,7 @@ public class Capping
 
     }
 
-    /**
+    /***
      * lower the capping lift
      */
     public void  lower(double power){
