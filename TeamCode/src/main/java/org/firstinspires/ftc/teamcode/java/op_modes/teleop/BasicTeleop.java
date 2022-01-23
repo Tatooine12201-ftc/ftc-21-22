@@ -47,7 +47,8 @@ public class BasicTeleop extends LinearOpMode {
         Carousel carousel = new Carousel(carouselMotor);
         Intake intake = new Intake(intakeMotor);
         Capping capping = new Capping(arm, cappingServo);
-
+        boolean isPressed =false;
+        boolean isOpen =false;
         // creating an array for the motor speeds
         double[] motorSpeeds = new double[2];
 
@@ -58,11 +59,9 @@ public class BasicTeleop extends LinearOpMode {
 
             // correlating gamepad sticks to driving states
             double drive = -gamepad1.left_stick_y;
-            double turn = gamepad1.right_trigger - gamepad1.left_trigger;
+            double turn = gamepad1.right_stick_x;
 
-                if (gamepad2.b) {
-                    //capping.changePosition();
-                }
+
                 if (gamepad2.y) {
                     carousel.spin();
                 } else if (gamepad2.back) {
@@ -108,15 +107,12 @@ public class BasicTeleop extends LinearOpMode {
                 // gamepad and max speed
                 leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
                 rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
-                if(gamepad2.left_trigger >0 && gamepad2.right_trigger == 0) {
-                   capping.lift(gamepad2.left_trigger);
-                }
-                else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0)
-                {
+                if(!capping.lift(gamepad2.left_trigger)) {
                    capping.lower(gamepad2.right_trigger);
                 }
 
-                capping.stop();
+
+                    robot.cappingServo.setPosition(1-(gamepad2.b?1:0));//close
 
                 lift.stop();
                 intake.stop();
