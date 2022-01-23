@@ -2,7 +2,9 @@ package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -12,17 +14,17 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 public class basicAuto extends LinearOpMode {
 
     /* Declare OpMode members. */
-    RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
+    RobotHardware robot = new RobotHardware();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
 
-    static final double     COUNTS_PER_MOTOR_REV    = 28 ;    // eg: TETRIX Motor Encoder
-    static final double     DRIVE_GEAR_REDUCTION    = 18.9;     // This is < 1.0 if geared UP
-    static final double     WHEEL_DIAMETER_MM  = 4.0 * 25.4 ;     // For figuring circumference
-    static final double     WHEEL_CIRCUMFERENCE         = (  WHEEL_DIAMETER_MM * Math.PI) ;
+    static final double COUNTS_PER_MOTOR_REV = 28;    // eg: TETRIX Motor Encoder
+    static final double DRIVE_GEAR_REDUCTION = 18.9;     // This is < 1.0 if geared UP
+    static final double WHEEL_DIAMETER_MM = 4.0 * 25.4;     // For figuring circumference
+    static final double WHEEL_CIRCUMFERENCE = (WHEEL_DIAMETER_MM * Math.PI);
 
 
-    static final double     DRIVE_SPEED             = 1;
-    static final double     TURN_SPEED              = 0.5;
+    static final double DRIVE_SPEED = 1;
+    static final double TURN_SPEED = 0.5;
 
     @Override
     public void runOpMode() {
@@ -44,7 +46,7 @@ public class basicAuto extends LinearOpMode {
         robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Send telemetry message to indicate successful Encoder reset
-        telemetry.addData("Path0",  "Starting at %7d :%7d",
+        telemetry.addData("Path0", "Starting at %7d :%7d",
                 robot.leftMotor.getCurrentPosition(),
                 robot.rightMotor.getCurrentPosition());
         telemetry.update();
@@ -54,11 +56,10 @@ public class basicAuto extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED,  400,  400, 5.0);// S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED, 280,-280, 2.0);
+        encoderDrive(DRIVE_SPEED, 400, 400, 5.0);// S1: Forward 47 Inches with 5 Sec timeout
+        encoderDrive(TURN_SPEED, 280, -280, 2.0);
         //encoderDrive(TURN_SPEED,   12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
         //encoderDrive(DRIVE_SPEED, -2, -2, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
-
 
 
     }
@@ -81,8 +82,8 @@ public class basicAuto extends LinearOpMode {
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int)(((leftInches /WHEEL_CIRCUMFERENCE)*COUNTS_PER_MOTOR_REV) *(DRIVE_GEAR_REDUCTION));
-            newRightTarget = robot.rightMotor.getCurrentPosition() + (int)(((rightInches /WHEEL_CIRCUMFERENCE)*COUNTS_PER_MOTOR_REV) * (DRIVE_GEAR_REDUCTION));
+            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (((leftInches / WHEEL_CIRCUMFERENCE) * COUNTS_PER_MOTOR_REV) * (DRIVE_GEAR_REDUCTION));
+            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (((rightInches / WHEEL_CIRCUMFERENCE) * COUNTS_PER_MOTOR_REV) * (DRIVE_GEAR_REDUCTION));
             robot.leftMotor.setTargetPosition(newLeftTarget);
             robot.rightMotor.setTargetPosition(newRightTarget);
 
@@ -106,8 +107,8 @@ public class basicAuto extends LinearOpMode {
                     (robot.leftMotor.isBusy() && robot.rightMotor.isBusy())) {
 
                 // Display it for the driver.
-                telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
-                telemetry.addData("Path2",  "Running at %7d :%7d",
+                telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
+                telemetry.addData("Path2", "Running at %7d :%7d",
                         robot.leftMotor.getCurrentPosition(),
                         robot.rightMotor.getCurrentPosition());
                 telemetry.update();
