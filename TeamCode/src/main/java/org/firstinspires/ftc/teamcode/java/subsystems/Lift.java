@@ -46,7 +46,7 @@ public class Lift
 
 	public void init()
 	{
-		while (lift.getCurrentPosition() > 150) {
+		while (lift.getCurrentPosition() > 0) {
 			lift.setPower(LOWERING_SPEED);
 		}
 	}
@@ -54,7 +54,7 @@ public class Lift
 	 * this function lifts
 	 */
 	public void lift() {
-		if (lift.getCurrentPosition() < 1200) {
+		if (lift.getCurrentPosition() < 10000) {
 			lift.setPower(LIFTING_SPEED);
 		}
 	}
@@ -63,7 +63,7 @@ public class Lift
 	 * this function outtakes
 	 */
 	public void lower() {
-		if (lift.getCurrentPosition() > 150) {
+		if (lift.getCurrentPosition() > 0) {
 			lift.setPower(LOWERING_SPEED);
 		}
 	}

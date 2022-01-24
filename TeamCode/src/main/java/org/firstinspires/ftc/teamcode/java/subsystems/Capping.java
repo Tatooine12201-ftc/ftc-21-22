@@ -31,8 +31,8 @@ public class Capping
         this.cappingServo = cappingServo;
     }
 
-    private static final double LIFTING_SPEED = 0.1;
-    private static final double LOWERING_SPEED = -0.1;
+    private static final double LIFTING_SPEED = 1;
+    private static final double LOWERING_SPEED = -1;
 
     private static final double OPEN_ARM = 1;
     private static final double CLOSED_ARM = 0;
@@ -40,9 +40,14 @@ public class Capping
     private boolean isOpen = false;
     private boolean isBeay = false;
 
+    public boolean isOpen() {
+        return isOpen;
+    }
+
     /**
      * this function is opening the servo
      */
+
     public void open() {
         cappingServo.setPosition(OPEN_ARM);
         isOpen = true;
@@ -60,11 +65,11 @@ public class Capping
      * this function is opening or closing the servo if open it will close
      */
     public void changePosition(){
-        if (isOpen && !isBeay){
+        if (isOpen ){
             isBeay = true;
             close();
         }
-        else if (!isOpen && !isBeay )
+        else if (!isOpen  )
         {
             isBeay = true;
             open();
@@ -77,18 +82,19 @@ public class Capping
     /**
      * rises the capping lift
      */
-    public void lift(double power) {
+    public boolean lift(double power) {
         close();
         arm.setPower(LIFTING_SPEED *power) ;
-
+        return power > 0;
     }
 
     /***
      * lower the capping lift
      */
-    public void  lower(double power){
+    public boolean  lower(double power){
 
         arm.setPower(LOWERING_SPEED * power);
+        return power > 0;
     }
 
     /**
