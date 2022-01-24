@@ -1,3 +1,5 @@
+
+
 package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -10,7 +12,7 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name = "blue Close", group = "auto")
+@Autonomous(name = "park blue", group = "auto")
 public class blueClose  extends LinearOpMode {
 	/* Declare OpMode members. */
 	RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
@@ -40,28 +42,11 @@ public class blueClose  extends LinearOpMode {
 		Lift lift = new Lift(robot.elevator);
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
-		lift.init();
+
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,150,0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (12*2*25.4),-90);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,0);
-		runtime.reset();
-		while (runtime.seconds() < 2)
-		{
-			lift.lift();
-		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
-		runtime.reset();
-		while (runtime.seconds() < 2)
-		{
-			intake.outtake();
-		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
-		while (runtime.seconds() < 2)
-		{
-			lift.lower();
-		}
-		ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,-90);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 2000,-90);
+
+
 	}
 }

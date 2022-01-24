@@ -49,7 +49,7 @@ public class blueFar  extends LinearOpMode {
 		while (runtime.seconds() < 2)
 		{
 			lift.lift();
-		}
+
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
 		runtime.reset();
 		while (runtime.seconds() < 2)
@@ -63,5 +63,7 @@ public class blueFar  extends LinearOpMode {
 		}
 		ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,90);
+	}
+
 	}
 }

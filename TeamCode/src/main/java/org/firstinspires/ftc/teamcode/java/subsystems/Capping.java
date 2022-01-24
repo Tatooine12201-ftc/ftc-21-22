@@ -100,4 +100,6 @@ public class Capping
         isBeay =false;
     }
 
+    public void CRSsrvo(float left_trigger) {
     }
+}
