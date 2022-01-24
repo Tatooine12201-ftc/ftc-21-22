@@ -46,9 +46,8 @@ public class Lift
 
 	public void init()
 	{
-		while (lift.getCurrentPosition() > 0) {
-			lift.setPower(LOWERING_SPEED);
-		}
+
+		lift.setPower(LOWERING_SPEED);
 	}
 	/**
 	 * this function lifts

@@ -69,9 +69,10 @@ public class BasicTeleop extends LinearOpMode {
             }
 
             if (gamepad2.dpad_down) {
-                lift.lower();
-            } else if (gamepad2.dpad_up) {
-                lift.lift();
+                robot.elevator.setPower(-1);
+            }
+            else if (gamepad2.dpad_up) {
+                robot.elevator.setPower(1);
             }
 
 
