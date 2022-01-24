@@ -54,18 +54,18 @@ public class Lift
 	 * this function lifts
 	 */
 	public void lift() {
-		if (lift.getCurrentPosition() < 10000) {
+
 			lift.setPower(LIFTING_SPEED);
-		}
+
 	}
 
 	/**
 	 * this function outtakes
 	 */
 	public void lower() {
-		if (lift.getCurrentPosition() > 0) {
+
 			lift.setPower(LOWERING_SPEED);
-		}
+
 	}
 
 	public int getPose(){

@@ -72,10 +72,6 @@ public class BasicTeleop extends LinearOpMode {
                 lift.lower();
             } else if (gamepad2.dpad_up) {
                 lift.lift();
-            } else {
-                while (lift.getPose() < 150 && opModeIsActive()) {
-                    lift.lift();
-                }
             }
 
 
