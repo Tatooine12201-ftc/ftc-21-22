@@ -10,7 +10,7 @@ public class Carousel {
 	private final DcMotor carousel;
 	private static final double CAROUSEL_SPEED = 1;
 
-	private boolean isReversed = false;
+	public boolean isReversed = false;
 
 	/**
 	 * this function is the constructor for the carousel subsystem
@@ -43,12 +43,13 @@ public class Carousel {
 	 * this function changes the direction of the carousel
 	 */
 	public void changeDirection() {
-		if (isReversed){
-			carousel.setDirection(DcMotor.Direction.FORWARD);
-			isReversed = false;
-		}else {
+		if (isReversed == false){
 			carousel.setDirection(DcMotor.Direction.REVERSE);
 			isReversed = true;
+		}
+		else if (isReversed == true){
+			carousel.setDirection(DcMotor.Direction.FORWARD);
+			isReversed = false;
 		}
 	}
 }

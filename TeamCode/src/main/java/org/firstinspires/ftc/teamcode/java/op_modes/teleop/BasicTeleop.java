@@ -64,18 +64,21 @@ public class BasicTeleop extends LinearOpMode {
 
             if (gamepad2.y) {
                 carousel.spin();
-            } else if (gamepad2.back) {
+            }
+            else if (gamepad2.b) {
                 carousel.changeDirection();
+            }
+            else{
+                carousel.stop();
             }
 
             if (gamepad2.dpad_down) {
                 lift.lower();
+                telemetry.addLine("lift_down");
             } else if (gamepad2.dpad_up) {
                 lift.lift();
             } else {
-                while (lift.getPose() < 150 && opModeIsActive()) {
-                    lift.lift();
-                }
+                lift.stop();
             }
 
 
@@ -85,6 +88,9 @@ public class BasicTeleop extends LinearOpMode {
                 intake.intake();
             } else if (gamepad2.left_bumper) {
                 intake.outtake();
+            }
+            else {
+                intake.stop();
             }
 
 
@@ -111,13 +117,10 @@ public class BasicTeleop extends LinearOpMode {
             leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
             rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
 
-            if (gamepad2.left_trigger > 0 && gamepad2.right_trigger == 0) {
-                capping.CRSsrvo(gamepad2.left_trigger);
-            } else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0) {
 
-                if (!capping.lift(gamepad2.left_trigger)) {
+                if (!capping.lift(gamepad2.right_trigger)) {
 
-                    capping.lower(gamepad2.right_trigger);
+                    capping.lower(gamepad2.left_trigger);
                 }
 
 
@@ -129,6 +132,6 @@ public class BasicTeleop extends LinearOpMode {
             }
         }
     }
-}
+
 
 

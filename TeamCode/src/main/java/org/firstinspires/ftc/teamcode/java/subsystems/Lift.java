@@ -46,27 +46,34 @@ public class Lift
 
 	public void init()
 	{
-		while (lift.getCurrentPosition() > 0) {
-			lift.setPower(LOWERING_SPEED);
+		lift.setPower(0);
 		}
-	}
+
 	/**
 	 * this function lifts
 	 */
 	public void lift() {
-		if (lift.getCurrentPosition() < 10000) {
 			lift.setPower(LIFTING_SPEED);
-		}
+			 if( lift.getCurrentPosition()  >1200)
+			 {
+				 lift.setPower(LIFTING_SPEED);
+			 }
+			else  if (lift.getCurrentPosition()  <0)
+		{   lift.setPower(0); }
+
+
+
+
+
 	}
 
 	/**
-	 * this function outtakes
+	 *  * this function outtakes
 	 */
 	public void lower() {
-		if (lift.getCurrentPosition() > 0) {
 			lift.setPower(LOWERING_SPEED);
 		}
-	}
+
 
 	public int getPose(){
 		return lift.getCurrentPosition();
@@ -76,6 +83,9 @@ public class Lift
 	 */
 	public void stop() {
 		lift.setPower(0);
+	}
+
+	public void setPower() {
 	}
 
 }

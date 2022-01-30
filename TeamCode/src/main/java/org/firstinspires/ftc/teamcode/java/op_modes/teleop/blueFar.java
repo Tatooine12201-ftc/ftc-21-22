@@ -33,37 +33,68 @@ public class blueFar  extends LinearOpMode {
 
 		robot.leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 		robot.rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+		robot.elevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 		robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+		robot.elevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
 		Lift lift = new Lift(robot.elevator);
 		Intake intake = new Intake(robot.intake);
+
 		waitForStart();
+
 		lift.init();
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,150,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 12*2*25.4,90);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,445,0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,485,90);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,1,0);
 		runtime.reset();
 		while (runtime.seconds() < 2)
 		{
 			lift.lift();
+		}
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
-		runtime.reset();
-		while (runtime.seconds() < 2)
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,118,0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
+	//	ad.gyroDrive(AutoDrive.DRIVE_SPEED,485,90);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,0);
+		runtime.reset();//	while (runtime.seconds() < 4)
+		{
+			lift.lift();
+		}
+		while (runtime.seconds() <3)
 		{
 			intake.outtake();
+			intake.stop();
 		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
-		while (runtime.seconds() < 2)
+		while (runtime.seconds() < 4)
 		{
 			lift.lower();
+			lift.stop();
 		}
+
+
+			ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100,0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,90);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,620,0);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
+			//ad.gyroDrive(AutoDrive.DRIVE_SPEED,270,0);
+		//runtime.reset();
+	//	while (runtime.seconds() < 15)
+		{
+		//	intake.outtake();
+		}
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
+	//	while (runtime.seconds() < 2)
+		{
+	//		lift.lower();
+		}
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,12*2*25.4,90);
+	//	ad.gyroTurn(AutoDrive.TURN_SPEED,90);
+	  ad.gyroDrive(AutoDrive.DRIVE_SPEED, (160 +(12*2*25.4)) *2,90);
 	}
 
 	}
-}
