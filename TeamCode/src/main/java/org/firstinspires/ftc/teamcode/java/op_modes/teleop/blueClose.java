@@ -1,5 +1,3 @@
-
-
 package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -26,7 +24,7 @@ public class blueClose  extends LinearOpMode {
 	 *
 	 */
 	@Override
-	public void runOpMode()  {
+	public void runOpMode() {
 		robot.init(hardwareMap);
 
 		// Send telemetry message to signify robot waiting;
@@ -43,10 +41,41 @@ public class blueClose  extends LinearOpMode {
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,150,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 2000,-90);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 110, 0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 60, 0);
+		;
+		while (runtime.seconds() < 2) {
+			lift.lift();
+
+		}
+		runtime.reset();
+		while (runtime.seconds() < 2) {
+			intake.outtake();
+			intake.stop();
+			lift.lower();
+			lift.stop();
+		}
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -103, 0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 45);
+		runtime.reset();
+		while (runtime.seconds() < 2) {
+			intake.intake();
+		}
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -45);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 103, 0);
+		while (runtime.seconds() < 2) {
+			lift.lift();
+			intake.outtake();
+			intake.stop();
+			lift.lower();
+			lift.stop();
+		}
+		runtime.reset();
 
 
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -115, 0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 30, 0);
 	}
 }
