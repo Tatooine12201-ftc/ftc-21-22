@@ -24,7 +24,7 @@ public class RobotHardware {
 	public DcMotorEx intake = null;
 	public DcMotorEx elevator = null;
 
-	public CRServo armServo = null;
+	public Servo armServo = null;
 	public Servo cappingServo =null;
 
 	public BNO055IMU imu = null;
@@ -56,7 +56,7 @@ public class RobotHardware {
 		carousel = hardwareMap.get(DcMotor.class, "Carousel");
 		//cappingLift = hardwareMap.get(DcMotor.class, "Capping Lift");
 
-		armServo = hardwareMap.get(CRServo.class,"armServo");
+		armServo = hardwareMap.get(Servo.class,"armServo");
 		cappingServo = hardwareMap.get(Servo.class, "cappingServo");
 		elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		//cappingLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -70,7 +70,7 @@ public class RobotHardware {
 		carousel.setPower(0);
 		elevator.setPower(0);
 		//cappingLift.setPower(0);
-		armServo.setPower(0);
+		armServo.setPosition(0);
 		cappingServo.setPosition(1);
 
 		leftMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -79,7 +79,7 @@ public class RobotHardware {
 		intake.setDirection(DcMotor.Direction.REVERSE);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
 		elevator.setDirection(DcMotor.Direction.FORWARD);
-		armServo.setDirection(FORWARD);
+		//armServo.setDirection(FORWARD);
 		//cappingLift.setDirection(DcMotor.Direction.FORWARD);
 
 		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

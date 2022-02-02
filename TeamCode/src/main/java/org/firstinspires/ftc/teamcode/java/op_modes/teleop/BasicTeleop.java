@@ -39,7 +39,7 @@ public class BasicTeleop extends LinearOpMode {
         DcMotor elevaterMotor = robot.elevator;
         DcMotor carouselMotor = robot.carousel;
         DcMotor intakeMotor = robot.intake;
-        CRServo arm = robot.armServo;
+        Servo arm = robot.armServo;
         Servo cappingServo = robot.cappingServo;
 
 
