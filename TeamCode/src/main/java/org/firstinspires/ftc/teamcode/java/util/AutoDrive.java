@@ -55,7 +55,7 @@ public class AutoDrive {
 
 
 			// Determine new target position, and pass to motor controller
-			moveCounts = (int)((distance *0.76 / WHEEL_CIRCUMFERENCE)*COUNTS_PER_MOTOR_REV *(DRIVE_GEAR_REDUCTION));
+			moveCounts = (int)((distance * 0.76 / WHEEL_CIRCUMFERENCE)*COUNTS_PER_MOTOR_REV *(DRIVE_GEAR_REDUCTION));
 			newLeftTarget = this.leftMotor.getCurrentPosition() + moveCounts;
 			newRightTarget = this.rightMotor.getCurrentPosition() + moveCounts;
 

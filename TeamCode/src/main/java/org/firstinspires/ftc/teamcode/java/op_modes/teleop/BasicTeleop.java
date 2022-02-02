@@ -39,7 +39,7 @@ public class BasicTeleop extends LinearOpMode {
         DcMotor elevaterMotor = robot.elevator;
         DcMotor carouselMotor = robot.carousel;
         DcMotor intakeMotor = robot.intake;
-        CRServo arm = robot.armServo;
+        Servo arm = robot.armServo;
         Servo cappingServo = robot.cappingServo;
 
 
@@ -64,15 +64,21 @@ public class BasicTeleop extends LinearOpMode {
 
             if (gamepad2.y) {
                 carousel.spin();
-            } else if (gamepad2.back) {
+            }
+            else if (gamepad2.b) {
                 carousel.changeDirection();
+            }
+            else{
+                carousel.stop();
             }
 
             if (gamepad2.dpad_down) {
-                robot.elevator.setPower(-1);
-            }
-            else if (gamepad2.dpad_up) {
-                robot.elevator.setPower(1);
+                lift.lower();
+                telemetry.addLine("lift_down");
+            } else if (gamepad2.dpad_up) {
+                lift.lift();
+            } else {
+                lift.stop();
             }
 
 
@@ -82,6 +88,9 @@ public class BasicTeleop extends LinearOpMode {
                 intake.intake();
             } else if (gamepad2.left_bumper) {
                 intake.outtake();
+            }
+            else {
+                intake.stop();
             }
 
 
@@ -108,15 +117,13 @@ public class BasicTeleop extends LinearOpMode {
             leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
             rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
 
-            if (gamepad2.left_trigger > 0 && gamepad2.right_trigger == 0) {
-                capping.CRSsrvo(gamepad2.left_trigger);
-            } else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0) {
 
-                if (!capping.lift(gamepad2.left_trigger)) {
+                if (!capping.lift(gamepad2.right_trigger)) {
 
-                    capping.lower(gamepad2.right_trigger);
+                    capping.lower(gamepad2.left_trigger);
                 }
-
+                telemetry.addData("ss",capping.pos);
+                //telemetry.update();
 
                 robot.cappingServo.setPosition(1 - (gamepad2.b ? 1 : 0));//close
 
@@ -126,6 +133,6 @@ public class BasicTeleop extends LinearOpMode {
             }
         }
     }
-}
+
 
 
