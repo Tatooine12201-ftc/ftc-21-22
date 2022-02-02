@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.CRServo;
 
+
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
 import java.util.Calendar;
@@ -31,14 +32,14 @@ public class Capping
         this.cappingServo = cappingServo;
     }
 
-    private static final double LIFTING_SPEED = 0.2;
-    private static final double LOWERING_SPEED = -0.2;
+    private static final double LIFTING_SPEED = 0.02;
+    private static final double LOWERING_SPEED = -0.02;
 
     private static final double OPEN_ARM = 1;
     private static final double OPEN_CAPPING =1;
-    private static final double CLOSED_ARM = 0;
-    private static final double CLOSED_CAPPING = 0;
-    private double pos = 0;
+    private static final double CLOSED_ARM = 1;
+    private static final double CLOSED_CAPPING = 1;
+    public double pos = 0;
 
     private boolean isOpen = false;
     private boolean isBeay = false;
@@ -86,7 +87,7 @@ public class Capping
      * rises the capping lift
      */
     public boolean lift(double power) {
-        close();
+       // close();
         if(pos <1) {
             pos += (LIFTING_SPEED * power);
         }
@@ -126,6 +127,4 @@ public class Capping
         isBeay =false;
     }
 
-    public void CRSsrvo(float left_trigger) {
-    }
 }

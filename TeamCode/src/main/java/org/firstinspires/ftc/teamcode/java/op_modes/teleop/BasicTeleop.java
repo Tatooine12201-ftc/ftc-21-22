@@ -122,7 +122,8 @@ public class BasicTeleop extends LinearOpMode {
 
                     capping.lower(gamepad2.left_trigger);
                 }
-
+                telemetry.addData("ss",capping.pos);
+                //telemetry.update();
 
                 robot.cappingServo.setPosition(1 - (gamepad2.b ? 1 : 0));//close
 
