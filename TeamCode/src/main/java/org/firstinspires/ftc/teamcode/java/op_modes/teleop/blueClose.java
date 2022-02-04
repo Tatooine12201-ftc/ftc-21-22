@@ -41,41 +41,41 @@ public class blueClose  extends LinearOpMode {
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 110, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100, 0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 60, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 600, 0);
 		;
 		while (runtime.seconds() < 2) {
-			lift.lift();
+			lift.lower();
 
 		}
 		runtime.reset();
 		while (runtime.seconds() < 2) {
 			intake.outtake();
 			intake.stop();
-			lift.lower();
+			lift.lift();
 			lift.stop();
 		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -103, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1030, 0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED, 45);
 		runtime.reset();
 		while (runtime.seconds() < 2) {
 			intake.intake();
 		}
 		ad.gyroTurn(AutoDrive.TURN_SPEED, -45);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 103, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1030, 0);
 		while (runtime.seconds() < 2) {
-			lift.lift();
+			lift.lower();
 			intake.outtake();
 			intake.stop();
-			lift.lower();
+			lift.lift();
 			lift.stop();
 		}
 		runtime.reset();
 
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -115, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1150, 0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 30, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 300, 0);
 	}
 }
