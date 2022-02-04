@@ -40,42 +40,70 @@ public class blueClose  extends LinearOpMode {
 		Lift lift = new Lift(robot.elevator);
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
-
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1250, 0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 600, 0);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 50, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 720, 0);;
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 35.5);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,-400,0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -30);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,200,0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 30);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,750,0);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,800,0);
+	//	ad.gyroTurn(AutoDrive.TURN_SPEED, 1800);
+
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100, 0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 600, 0);
 		;
-		while (runtime.seconds() < 2) {
-			lift.lower();
+		//while (runtime.seconds() < 2) {
+			//lift.lower();
 
-		}
-		runtime.reset();
-		while (runtime.seconds() < 2) {
-			intake.outtake();
-			intake.stop();
-			lift.lift();
-			lift.stop();
-		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1030, 0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED, 45);
-		runtime.reset();
-		while (runtime.seconds() < 2) {
-			intake.intake();
-		}
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -45);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1030, 0);
-		while (runtime.seconds() < 2) {
-			lift.lower();
-			intake.outtake();
-			intake.stop();
-			lift.lift();
-			lift.stop();
-		}
-		runtime.reset();
+		//}
+		//runtime.reset();
+		//while (runtime.seconds() < 2) {
+		//	intake.outtake();
+
+		//}
+		//while (runtime.seconds() < 3){
+			//lift.lift();
+		//}
+		//while (runtime.seconds() < 5){
+			//lift.stop();
+			//intake.stop();
+		//}
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1030, 0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, -45);
+		//runtime.reset();
+		//while (runtime.seconds() < 2) {
+			//intake.intake();
+
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, 45);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1030, 0);
+		//}
+		//runtime.reset();
+		//while (runtime.seconds() < 2) {
+			//lift.lower();
+		//}
+		//while (runtime.seconds() < 4){
+			//intake.outtake();
+		//}
+		//while (runtime.seconds() < 5){
+		//	intake.stop();
+		//	lift.lift();
+
+		//}
+		//while (runtime.seconds() < 7){
+		//	lift.stop();
+		//}
 
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1150, 0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 300, 0);
+		//runtime.reset();
+
+
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1150, 0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 300, 0);
 	}
 }
