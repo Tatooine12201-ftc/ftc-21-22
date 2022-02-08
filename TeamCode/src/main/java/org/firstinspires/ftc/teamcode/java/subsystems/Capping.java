@@ -122,7 +122,7 @@ public class Capping
      * stop the capping lift
      */
     public void stop() {
-        close();
+        close ();
         //arm.setPower(0);
         isBeay =false;
     }

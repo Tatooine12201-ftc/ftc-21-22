@@ -70,7 +70,7 @@ public class RobotHardware {
 		carousel.setPower(0);
 		elevator.setPower(0);
 		//cappingLift.setPower(0);
-		armServo.setPosition(0);
+		armServo.setPosition(1);
 		cappingServo.setPosition(1);
 
 		leftMotor.setDirection(DcMotor.Direction.FORWARD);
