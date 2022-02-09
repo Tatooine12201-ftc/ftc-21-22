@@ -2,20 +2,16 @@ package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-
-//import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-import java.util.List;
-import java.util.Set;
+//import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 
 
 @TeleOp(name = "BasicTeleop")
@@ -47,8 +43,6 @@ public class BasicTeleop extends LinearOpMode {
         Carousel carousel = new Carousel(carouselMotor);
         Intake intake = new Intake(intakeMotor);
         Capping capping = new Capping(arm, cappingServo);
-        boolean isPressed = false;
-        boolean isOpen = false;
         // creating an array for the motor speeds
         double[] motorSpeeds = new double[2];
 
@@ -122,22 +116,29 @@ public class BasicTeleop extends LinearOpMode {
 
                     capping.lower(gamepad2.left_trigger);
                 }
+
                 else{
                     capping.stop();
                 telemetry.addData("ss",capping.pos);
+
+
                 //telemetry.update();
 
 
 
+
                 }
-                robot.cappingServo.setPosition(1 - (gamepad2.b ? 1 : 0));//close
+
+            }
+
+                robot.cappingServo.setPosition(1 - (gamepad2.a ? 1 : 0));//close
 
                 lift.stop();
                 intake.stop();
                 carousel.stop();
             }
         }
-    }
+
 
 
 

@@ -40,7 +40,11 @@ public class blueClose  extends LinearOpMode {
 		Lift lift = new Lift(robot.elevator);
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
+
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700,0);
+
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700, 0);
+
 		//ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 50, 0);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 680, 0);;
