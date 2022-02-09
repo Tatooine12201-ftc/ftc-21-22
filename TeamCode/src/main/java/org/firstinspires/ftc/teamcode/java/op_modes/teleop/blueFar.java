@@ -43,8 +43,8 @@ public class blueFar  extends LinearOpMode {
 		//lift.init();
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,450,0);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,160);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,2500,0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED,155);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,2700,0);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 12*2*25.4,90);
 		//ad.gyroTurn(AutoDrive.TURN_SPEED,0);
 		//runtime.reset();

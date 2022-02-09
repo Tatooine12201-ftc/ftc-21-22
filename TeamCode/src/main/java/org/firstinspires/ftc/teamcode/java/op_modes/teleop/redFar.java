@@ -29,7 +29,7 @@ public class redFar  extends LinearOpMode {
 	public void runOpMode()  {
 		robot.init(hardwareMap);
 
-		// Send telemetry message to signify robot waiting;
+	//	 Send telemetry message to signify robot waiting;
 		telemetry.addData("Status", "Resetting Encoders");    //
 		telemetry.update();
 
@@ -39,31 +39,31 @@ public class redFar  extends LinearOpMode {
 		robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-		Lift lift = new Lift(robot.elevator);
-		Intake intake = new Intake(robot.intake);
+		//Lift lift = new Lift(robot.elevator);
+		//Intake intake = new Intake(robot.intake);
 		waitForStart();
-		lift.init();
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,150,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (12*2*25.4),-90);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,0);
-		runtime.reset();
-		while (runtime.seconds() < 2)
-		{
-			lift.lift();
-		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
-		runtime.reset();
-		while (runtime.seconds() < 2)
-		{
-			intake.outtake();
-		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
-		while (runtime.seconds() < 2)
-		{
-			lift.lower();
-		}
-		ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,-90);
+		//lift.init();
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,450,0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED,-155);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 2700,0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,0);
+		//runtime.reset();
+		//while (runtime.seconds() < 2)
+		//{
+		//	lift.lift();
+		//}
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
+		//runtime.reset();
+		//while (runtime.seconds() < 2)
+		//{
+		//	intake.outtake();
+		//}
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
+		//while (runtime.seconds() < 2)
+		//{
+		//	lift.lower();
+		//}
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,-90);
 	}
 }
