@@ -14,7 +14,7 @@ public class Intake
     private final DcMotor intake;
 
     private static final double INTAKE_SPEED = 1;
-    private static final double OUTTAKE_SPEED = -1;
+    private static final double OUTTAKE_SPEED = -0.5;
 
     private static final double OPEN = 1;
     private static final double CLOSED = 0;
@@ -55,7 +55,9 @@ public class Intake
     /**
      * this function turns off the intake
      */
-    public void stop() { intake.setPower(0); }
+    public void stop() {
+        intake.setPower(0);
+    }
 
     public void debug() {}
 }

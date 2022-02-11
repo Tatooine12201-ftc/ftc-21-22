@@ -124,9 +124,19 @@ public class BasicTeleop extends LinearOpMode {
 
                 //telemetry.update();
 
+                    if (gamepad2.a && !capping.isOpen()) {
+
+                        capping.open();
+
+                    }   else if (gamepad2.x && capping.isOpen()){
+                        capping.close();
+                    }
 
 
-
+//                    else {
+//                        capping.stop();
+//
+//                    }
                 }
 
             }
