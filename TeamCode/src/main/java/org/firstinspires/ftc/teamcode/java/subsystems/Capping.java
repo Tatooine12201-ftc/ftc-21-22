@@ -36,9 +36,9 @@ public class Capping
     private static final double LOWERING_SPEED = -0.02;
 
     private static final double OPEN_ARM = 1;
-    private static final double OPEN_CAPPING =1;
-    private static final double CLOSED_ARM = 1;
-    private static final double CLOSED_CAPPING = 1;
+    private static final double OPEN_CAPPING = 0.1;
+    private static final double CLOSED_ARM = 0;
+    private static final double CLOSED_CAPPING =0.8;
     public double pos = 0;
 
     private boolean isOpen = false;
