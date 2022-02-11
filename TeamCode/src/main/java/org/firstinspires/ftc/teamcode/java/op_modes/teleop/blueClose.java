@@ -43,7 +43,6 @@ public class blueClose  extends LinearOpMode {
 
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700,0);
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700, 0);
 
 		//ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 50, 0);
