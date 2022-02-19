@@ -37,14 +37,36 @@ public class blueFar  extends LinearOpMode {
 		robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-		//Lift lift = new Lift(robot.elevator);
-		//Intake intake = new Intake(robot.intake);
-		//waitForStart();
+		Lift lift = new Lift(robot.elevator);
+		Intake intake = new Intake(robot.intake);
+		waitForStart();
 		//lift.init();
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,450,0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,640,0);
+		while (runtime.seconds() > 2);
+		{
+			lift.lift();
+		}
+		while (runtime.seconds() <3)
+		{
+			intake.outtake();
+		}
+		while (runtime.seconds() < 2)
+		{
+			intake.stop();
+				lift.lower();
+
+		}
+		while (runtime.seconds() < 1)
+		{
+
+			lift.stop();
+
+		}
+
+
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,155);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,2700,0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED,85);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,1500,0);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 12*2*25.4,90);
 		//ad.gyroTurn(AutoDrive.TURN_SPEED,0);
 		//runtime.reset();

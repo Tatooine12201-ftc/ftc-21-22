@@ -43,7 +43,7 @@ public class redClose  extends LinearOpMode {
 		//Intake intake = new Intake(robot.intake);
 		waitForStart();
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700,0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 720,0);
 		ad.gyroTurn(AutoDrive.DRIVE_SPEED, -90);
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -550,0);
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 5,0);
