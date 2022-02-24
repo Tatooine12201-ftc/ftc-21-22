@@ -41,32 +41,32 @@ public class blueFar  extends LinearOpMode {
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
 		//lift.init();
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,640,0);
-		while (runtime.seconds() > 2);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,640,0);
+	//	while (runtime.seconds() > 2);
 		{
-			lift.lift();
+		//	lift.lift();
 		}
-		while (runtime.seconds() <3)
+	//	while (runtime.seconds() > 3)
 		{
-			intake.outtake();
+		//	intake.outtake();
 		}
-		while (runtime.seconds() < 2)
+		//while (runtime.seconds() > 4)
 		{
-			intake.stop();
-				lift.lower();
+		//	intake.stop();
+		//		lift.lower();
 
 		}
-		while (runtime.seconds() < 1)
+	//	while (runtime.seconds() > 5.5)
 		{
 
-			lift.stop();
+		//	lift.stop();
 
 		}
 
 
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,85);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,1500,0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,85);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,1500,0);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 12*2*25.4,90);
 		//ad.gyroTurn(AutoDrive.TURN_SPEED,0);
 		//runtime.reset();
@@ -87,7 +87,9 @@ public class blueFar  extends LinearOpMode {
 			}
 			//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		//	ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,90);
+			//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		}
-
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,1000,0);
 	}
+
 }

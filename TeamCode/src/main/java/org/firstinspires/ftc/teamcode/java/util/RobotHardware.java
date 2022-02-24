@@ -82,6 +82,10 @@ public class RobotHardware {
 		//armServo.setDirection(FORWARD);
 		//cappingLift.setDirection(DcMotor.Direction.FORWARD);
 
+		leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+		rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+		elevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 		leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 		intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

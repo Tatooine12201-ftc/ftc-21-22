@@ -76,7 +76,7 @@ public class BasicTeleop extends LinearOpMode {
             }
 
 
-            if (gamepad2.right_bumper) {
+           if (gamepad2.right_bumper) {
                 telemetry.addData("aaaaaaa", 'A');
                 telemetry.update();
                 intake.intake();

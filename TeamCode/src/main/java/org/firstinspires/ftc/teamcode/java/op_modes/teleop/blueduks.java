@@ -48,6 +48,10 @@ public class blueduks  extends LinearOpMode {
         {
             carousel.spin();
         }
+
+        while (runtime.seconds() > 6){
+            carousel.stop();
+        }
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,900,0);
         ad.gyroTurn(AutoDrive.TURN_SPEED,120);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,680,0);
