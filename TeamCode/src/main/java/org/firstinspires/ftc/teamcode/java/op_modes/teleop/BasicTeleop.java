@@ -83,7 +83,7 @@ public class BasicTeleop extends LinearOpMode {
                 telemetry.addData("aaaaaaa", 'A');
                 telemetry.update();
                 intake.intake();
-            } else if (gamepad2.left_bumper) {
+            } else if (gamepad2.   left_bumper) {
                 intake.outtake();
                 } else {
                 intake.stop();
@@ -108,7 +108,7 @@ public class BasicTeleop extends LinearOpMode {
 
             telemetry.addData("ticks", robot.elevator.getCurrentPosition());
             telemetry.update();
-                // setting power to the motors based the values of the speeds from the
+                // setting power to the motors based the va     lues of the speeds from the
                 // gamepad and max speed
             leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
             rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);

@@ -5,15 +5,13 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-
-
-
-@Autonomous(name = "blue cube", group = "auto")
+@Autonomous(name = "bluecube", group = "auto")
 public class bluecube  extends LinearOpMode {
     /* Declare OpMode members. */
     RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
@@ -27,7 +25,7 @@ public class bluecube  extends LinearOpMode {
      *
      */
     @Override
-    public void runOpMode()  {
+    public void runOpMode() {
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
@@ -39,9 +37,24 @@ public class bluecube  extends LinearOpMode {
 
         robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        DcMotor carouselMotor = robot.carousel;
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-        Lift lift = new Lift(robot.elevator);
         Intake intake = new Intake(robot.intake);
-        waitForStart();
+        Lift lift = new Lift(robot.elevator);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,520 , 0);
+        lift.lift(3);
+        intake.outtake(2);
+        intake.stop();
+        lift.lower(2);
+        lift.stop();
+        ad.gyroTurn(AutoDrive.TURN_SPEED , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
+
+
+
     }
-    }
+
+
+
+}
