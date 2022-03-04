@@ -78,7 +78,7 @@ public class RobotHardware {
 		carousel.setDirection(DcMotor.Direction.FORWARD);
 		intake.setDirection(DcMotor.Direction.FORWARD);
 		carousel.setDirection(DcMotor.Direction.FORWARD);
-		elevator.setDirection(DcMotor.Direction.FORWARD);
+		elevator.setDirection(DcMotor.Direction.REVERSE);
 		//armServo.setDirection(FORWARD);
 		//cappingLift.setDirection(DcMotor.Direction.FORWARD);
 

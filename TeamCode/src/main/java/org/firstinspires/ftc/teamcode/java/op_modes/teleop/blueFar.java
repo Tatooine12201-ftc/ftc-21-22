@@ -40,6 +40,7 @@ public class blueFar  extends LinearOpMode {
 		Lift lift = new Lift(robot.elevator);
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,520 , 0);
 		//lift.init();
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,640,0);
 	//	while (runtime.seconds() > 2);
@@ -91,6 +92,8 @@ public class blueFar  extends LinearOpMode {
 			//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		}
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,1000,0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED , 115);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
 	//	while (true) {
 			//telemetry.addData("left", robot.leftMotor.getCurrentPosition());
 			//telemetry.addData("right", robot.rightMotor.getCurrentPosition());
