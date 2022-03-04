@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.java.subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
@@ -37,6 +37,15 @@ public class Carousel {
 	 */
 	public void spin (){
 		carousel.setPower(CAROUSEL_SPEED);
+	}
+
+	public void spin(int sec){
+		ElapsedTime spintime = new ElapsedTime();
+		spintime.reset();
+		while ((spintime.time() < sec)) {
+			spin();
+		}
+		stop();
 	}
 
 	/**

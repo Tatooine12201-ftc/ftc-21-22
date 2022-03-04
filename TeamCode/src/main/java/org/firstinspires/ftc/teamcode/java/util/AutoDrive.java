@@ -18,18 +18,18 @@ public class AutoDrive {
 
 
 	private static final double     COUNTS_PER_MOTOR_REV    = 28 ;    // eg: TETRIX Motor Encoder
-	private static final double     DRIVE_GEAR_REDUCTION    = 18.9;     // This is < 1.0 if geared UP
+	private static final double     DRIVE_GEAR_REDUCTION    = 19.2;     // This is < 1.0 if geared UP
 	private static final double     WHEEL_DIAMETER_MM  = 4.0 * 25.4 ;     // For figuring circumference
 	private static final double     WHEEL_CIRCUMFERENCE         = (  WHEEL_DIAMETER_MM * Math.PI) ;
-
+	private static final double     COUNTS_PER_MM = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / WHEEL_CIRCUMFERENCE  ;
 	// These constants define the desired driving/control characteristics
 	// The can/should be tweaked to suite the specific this drive train.
-	public static final double     DRIVE_SPEED             = 0.6;     // Nominal speed for better accuracy.
-	public static final double     TURN_SPEED              = 0.4;     // Nominal half speed for better accuracy.
+	public static final double     DRIVE_SPEED             = 0.7;     // Nominal speed for better accuracy.
+	public static final double     TURN_SPEED              = 0.5;     // Nominal half speed for better accuracy.
 
 	private static final double     HEADING_THRESHOLD       = 0.5;      // As tight as we can make it with an integer gyro
-	private static final double     P_TURN_COEFF            = 0.0247224;     // Larger is more responsive, but also less stable
-	private static final double     P_DRIVE_COEFF           = 0.029851;     // Larger is more responsive, but also less stable
+	private static final double     P_TURN_COEFF            = 0.0447224;     // Larger is more responsive, but also less stable
+	private static final double     P_DRIVE_COEFF           = 0.003551;     // Larger is more responsive, but also less stable
 
 	public AutoDrive(DcMotor leftMotor, DcMotor rightMotor, BNO055IMU imu, Telemetry telemetry)
 	{
@@ -55,7 +55,7 @@ public class AutoDrive {
 
 
 			// Determine new target position, and pass to motor controller
-			moveCounts = (int)((distance * 0.76 / WHEEL_CIRCUMFERENCE)*COUNTS_PER_MOTOR_REV *(DRIVE_GEAR_REDUCTION));
+			moveCounts = (int)(distance  * COUNTS_PER_MM);
 			newLeftTarget = this.leftMotor.getCurrentPosition() + moveCounts;
 			newRightTarget = this.rightMotor.getCurrentPosition() + moveCounts;
 
@@ -68,8 +68,11 @@ public class AutoDrive {
 
 			// start motion.
 			speed = Range.clip(Math.abs(speed), 0.0, 1.0);
-			this.leftMotor.setPower(speed);
-			this.rightMotor.setPower(speed);
+			/*
+				this.leftMotor.setPower(0.01);
+				this.rightMotor.setPower(0.01);
+
+			 */
 
 			// keep looping while we are still active, and BOTH motors are running.
 			while (
@@ -95,8 +98,8 @@ public class AutoDrive {
 					rightSpeed /= max;
 				}
 
-				this.leftMotor.setPower(leftSpeed);
-				this.rightMotor.setPower(rightSpeed);
+				this.leftMotor.setPower(leftSpeed * speed);
+				this.rightMotor.setPower(rightSpeed * speed) ;
 
 				// Display drive status for the driver.
 				telemetry.addData("Err/St",  "%5.1f/%5.1f",  error, steer);

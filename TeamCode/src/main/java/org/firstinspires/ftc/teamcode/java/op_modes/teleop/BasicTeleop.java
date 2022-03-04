@@ -49,20 +49,24 @@ public class BasicTeleop extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-
-
-            // correlating gamepad sticks to driving states
             double drive = -gamepad1.left_stick_y;
             double turn = gamepad1.right_stick_x;
+
+            if (!capping.lift(gamepad2.right_trigger)) {
+
+                capping.lower(gamepad2.left_trigger);
+            } else {
+                capping.stop();
+                telemetry.addData("ss", capping.pos);
+                // correlating gamepad sticks to driving states
+            }
 
 
             if (gamepad2.y) {
                 carousel.spin();
-            }
-            else if (gamepad2.b) {
+            } else if (gamepad2.b) {
                 carousel.changeDirection();
-            }
-            else{
+            } else {
                 carousel.stop();
             }
 
@@ -75,29 +79,27 @@ public class BasicTeleop extends LinearOpMode {
                 lift.stop();
             }
 
-
-           if (gamepad2.right_bumper) {
+            if (gamepad2.right_bumper) {
                 telemetry.addData("aaaaaaa", 'A');
                 telemetry.update();
                 intake.intake();
             } else if (gamepad2.left_bumper) {
                 intake.outtake();
-            }
-            else {
+                } else {
                 intake.stop();
             }
 
 
-            // creating array for motor speeds that takes a value from the different driving states
+                // creating array for motor speeds that takes a value from the different driving states
             motorSpeeds[0] = drive + turn;
             motorSpeeds[1] = drive - turn;
 
 
-            // defining max speed for motors
+                // defining max speed for motors
             double max = Math.max(Math.abs(motorSpeeds[0]), Math.abs(motorSpeeds[1]));
 
 
-            // creating a stable range for the motor max speed
+                // creating a stable range for the motor max speed
             if (max > 1) {
                 for (int i = 0; i < 2; i++) {
                     motorSpeeds[i] = motorSpeeds[i] / max;
@@ -106,48 +108,22 @@ public class BasicTeleop extends LinearOpMode {
 
             telemetry.addData("ticks", robot.elevator.getCurrentPosition());
             telemetry.update();
-            // setting power to the motors based the values of the speeds from the
-            // gamepad and max speed
+                // setting power to the motors based the values of the speeds from the
+                // gamepad and max speed
             leftMotor.setPower(motorSpeeds[0] * MAX_SPEED);
             rightMotor.setPower(motorSpeeds[1] * MAX_SPEED);
 
 
-                if (!capping.lift(gamepad2.right_trigger)) {
+                //  robot.cappingServo.setPosition(1 - (gamepad2.a ? 1 : 0));//close
+            robot.cappingServo.setPosition(1 - (gamepad2.b ? 1 : 0));//close
 
-                    capping.lower(gamepad2.left_trigger);
-                }
+            lift.stop();
+            intake.stop();
+            carousel.stop();
 
-                else{
-                    capping.stop();
-                telemetry.addData("ss",capping.pos);
-
-
-                //telemetry.update();
-
-                    if (gamepad2.a && !capping.isOpen()) {
-
-                        capping.open();
-
-                    }   else if (gamepad2.x && capping.isOpen()){
-                        capping.close();
-                    }
-
-
-//                    else {
-//                        capping.stop();
-//
-//                    }
-                }
-
-            }
-
-                robot.cappingServo.setPosition(1 - (gamepad2.a ? 1 : 0));//close
-
-                lift.stop();
-                intake.stop();
-                carousel.stop();
-            }
         }
+    }
+}
 
 
 

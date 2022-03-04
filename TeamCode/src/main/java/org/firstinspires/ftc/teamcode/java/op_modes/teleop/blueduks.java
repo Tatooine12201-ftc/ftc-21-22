@@ -42,19 +42,20 @@ public class blueduks  extends LinearOpMode {
         Carousel carousel = new Carousel(carouselMotor);
         //Lift lift = new Lift(robot.elevator);
        ad.gyroDrive(AutoDrive.DRIVE_SPEED,550,0);
-        ad.gyroTurn(AutoDrive.TURN_SPEED,35);
-       ad.gyroDrive(AutoDrive.DRIVE_SPEED,-600,0);
-       while (runtime.seconds() > 3);
-        {
-            carousel.spin();
-        }
+        ad.gyroTurn(AutoDrive.TURN_SPEED,40);
+       ad.gyroDrive(AutoDrive.DRIVE_SPEED,-620,0);
 
-        while (runtime.seconds() > 6){
-            carousel.stop();
-        }
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,900,0);
-        ad.gyroTurn(AutoDrive.TURN_SPEED,120);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,680,0);
+        carousel.changeDirection();
+        carousel.spin(3);
+
+        carousel.stop();
+
+        ad.gyroTurn(AutoDrive.TURN_SPEED,40);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,570,0);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,220,0);
+        //ad.gyroTurn(AutoDrive.TURN_SPEED,120);
+        //ad.gyroDrive(AutoDrive.DRIVE_SPEED,680,0);
 
        //
 

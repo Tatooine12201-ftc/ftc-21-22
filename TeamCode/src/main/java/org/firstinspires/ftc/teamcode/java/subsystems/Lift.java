@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
@@ -64,24 +65,41 @@ public class Lift
 			 }
 			 //else  if (lift.getCurrentPosition()  < 10)
 		//{  lift.setPower(0); }
-
-
-
-
-
+	}
+	public void lift(int sec){
+		ElapsedTime spintime = new ElapsedTime();
+		spintime.reset();
+		while ((spintime.time() < sec)) {
+			lift();
+		}
+		stop();
 	}
 
 	/**
 	 *  * this function outtakes
 	 */
 	public void lower() {
-		if(lift.getCurrentPosition() > 10) {
+		if(lift.getCurrentPosition() > 5) {
 			lift.setPower(LOWERING_SPEED);
 		}
 		else {
 			stop();
 		}
+
+	}
+
+	/**
+	 *
+	 * @param sec
+	 */
+	public void lower(int sec){
+		ElapsedTime spintime = new ElapsedTime();
+		spintime.reset();
+		while ((spintime.time() < sec)) {
+			lower();
 		}
+		stop();
+	}
 
 
 	public int getPose(){
@@ -94,7 +112,6 @@ public class Lift
 		lift.setPower(0);
 	}
 
-	public void setPower() {
-	}
+
 
 }

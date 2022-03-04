@@ -44,6 +44,7 @@ public class blueFar  extends LinearOpMode {
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,640,0);
 	//	while (runtime.seconds() > 2);
 		{
+
 		//	lift.lift();
 		}
 	//	while (runtime.seconds() > 3)
@@ -90,6 +91,13 @@ public class blueFar  extends LinearOpMode {
 			//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		}
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,1000,0);
-	}
+	//	while (true) {
+			//telemetry.addData("left", robot.leftMotor.getCurrentPosition());
+			//telemetry.addData("right", robot.rightMotor.getCurrentPosition());
+			//telemetry.update();
+		}
 
-}
+
+
+
+	}
