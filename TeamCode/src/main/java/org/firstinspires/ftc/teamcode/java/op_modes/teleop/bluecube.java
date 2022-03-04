@@ -5,14 +5,16 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name = "blueDucks", group = "auto")
-public class blueduks  extends LinearOpMode {
+
+
+
+@Autonomous(name = "blue cube", group = "auto")
+public class bluecube  extends LinearOpMode {
     /* Declare OpMode members. */
     RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
@@ -25,7 +27,7 @@ public class blueduks  extends LinearOpMode {
      *
      */
     @Override
-    public void runOpMode() {
+    public void runOpMode()  {
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
@@ -37,29 +39,9 @@ public class blueduks  extends LinearOpMode {
 
         robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        DcMotor carouselMotor = robot.carousel;
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-        Carousel carousel = new Carousel(carouselMotor);
-        //Lift lift = new Lift(robot.elevator);
-       ad.gyroDrive(AutoDrive.DRIVE_SPEED,550,0);
-        ad.gyroTurn(AutoDrive.TURN_SPEED,35);
-       ad.gyroDrive(AutoDrive.DRIVE_SPEED,-621,0);
-
-        carousel.changeDirection();
-        carousel.spin(6);
-
-        carousel.stop();
-
-        ad.gyroTurn(AutoDrive.TURN_SPEED,40);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,570,0);
-        ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,240,0);
-        //ad.gyroTurn(AutoDrive.TURN_SPEED,120);
-        //ad.gyroDrive(AutoDrive.DRIVE_SPEED,680,0);
-
-       //
-
-     //  ad.gyroDrive(AutoDrive.DRIVE_SPEED,1000,0);
-       //   ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
+        Lift lift = new Lift(robot.elevator);
+        Intake intake = new Intake(robot.intake);
+        waitForStart();
     }
-}
+    }
