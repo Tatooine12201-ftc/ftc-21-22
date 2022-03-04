@@ -70,6 +70,11 @@ public class BasicTeleop extends LinearOpMode {
                 carousel.stop();
             }
 
+            if (gamepad2.x) {
+                telemetry.speak("meow");
+                telemetry.update();
+            }
+
             if (gamepad2.dpad_down) {
                 lift.lower();
                 telemetry.addLine("lift_down");
