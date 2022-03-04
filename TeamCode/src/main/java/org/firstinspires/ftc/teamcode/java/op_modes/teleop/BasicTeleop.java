@@ -64,7 +64,7 @@ public class BasicTeleop extends LinearOpMode {
 
             if (gamepad2.y) {
                 carousel.spin();
-            } else if (gamepad2.b) {
+            } else if (gamepad2.back) {
                 carousel.changeDirection();
             } else {
                 carousel.stop();
