@@ -43,5 +43,7 @@ public class bluecube  extends LinearOpMode {
         Lift lift = new Lift(robot.elevator);
         Intake intake = new Intake(robot.intake);
         waitForStart();
+
     }
+
     }

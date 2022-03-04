@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name = "park blue", group = "auto")
+@Autonomous(name = "park close", group = "auto")
 public class blueClose  extends LinearOpMode {
 	/* Declare OpMode members. */
 	RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
@@ -54,8 +54,8 @@ public class blueClose  extends LinearOpMode {
 		//ad.gyroTurn(AutoDrive.TURN_SPEED,90 );
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,-750,0);
 		ad.gyroTurn(AutoDrive.DRIVE_SPEED, 90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -550,0);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 5,0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -500,0);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 5,0);
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,800,0);
 	//	ad.gyroTurn(AutoDrive.TURN_SPEED, 1800);
 
