@@ -12,7 +12,7 @@ package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 		import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 		import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name = "park red", group = "auto")
+@Autonomous(name = "close red", group = "auto")
 public class redClose  extends LinearOpMode {
 	/* Declare OpMode members. */
 	RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware

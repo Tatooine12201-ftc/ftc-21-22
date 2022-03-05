@@ -10,9 +10,13 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-//public class bluecube2 {
-    @Autonomous(name = "bluecube2", group = "auto")
-    public class bluecube2  extends LinearOpMode {
+//public class blueclose2 {
+
+
+
+
+    @Autonomous(name = "blue close2", group = "auto")
+    public class blueclose2  extends LinearOpMode {
         /* Declare OpMode members. */
         RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
         private ElapsedTime runtime = new ElapsedTime();
@@ -37,23 +41,15 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-            DcMotor carouselMotor = robot.carousel;
             AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-            Intake intake = new Intake(robot.intake);
             Lift lift = new Lift(robot.elevator);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,560 , 0);
-            lift.lift(4);
-            intake.outtake(2);
-            intake.stop();
-            lift.lower(2);
-            lift.stop();
-            ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
+            Intake intake = new Intake(robot.intake);
+            waitForStart();
+
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 780,0);
+            ad.gyroTurn(AutoDrive.DRIVE_SPEED, -90);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 400,0);
+            intake.outtake(3);
         }
     }
-
-
-
-
 
