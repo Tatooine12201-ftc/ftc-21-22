@@ -11,8 +11,10 @@ import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
 
-@Autonomous(name = "bluecube", group = "auto")
-public class bluecube  extends LinearOpMode {
+
+
+@Autonomous(name = "bluecube3", group = "auto")
+public class bluecube3  extends LinearOpMode {
     /* Declare OpMode members. */
     RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
@@ -42,8 +44,8 @@ public class bluecube  extends LinearOpMode {
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
         Intake intake = new Intake(robot.intake);
         Lift lift = new Lift(robot.elevator);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,550 , 0);
-        lift.lift(2);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,560 , 0);
+        lift.lift(4);
         intake.outtake(2);
         intake.stop();
         lift.lower(2);

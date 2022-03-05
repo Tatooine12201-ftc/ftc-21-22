@@ -12,48 +12,8 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
 public class redcube {
 
-
-
-    @Autonomous(name = "redcube", group = "auto")
-    public class bluecube  extends LinearOpMode {
-        /* Declare OpMode members. */
-        RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
-        private ElapsedTime runtime = new ElapsedTime();
-        /**
-         * Override this method and place your code here.
-         * <p>
-         * Please do not swallow the InterruptedException, as it is used in cases
-         * where the op mode needs to be terminated early.
-         *
-         *
-         */
-        @Override
-        public void runOpMode() {
-            robot.init(hardwareMap);
-
-            // Send telemetry message to signify robot waiting;
-            telemetry.addData("Status", "Resetting Encoders");    //
-            telemetry.update();
-
-            robot.leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            robot.rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-            DcMotor carouselMotor = robot.carousel;
-            AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-            Intake intake = new Intake(robot.intake);
-            Lift lift = new Lift(robot.elevator);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,520 , 0);
-            lift.lift(3);
-            intake.outtake(2);
-            intake.stop();
-            lift.lower(2);
-            lift.stop();
-            ad.gyroTurn(AutoDrive.TURN_SPEED , 115);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
-        }
-    }
-
 }
+
+
+
+

@@ -24,7 +24,7 @@ public class blueFar  extends LinearOpMode {
 	 *
 	 */
 	@Override
-	public void runOpMode()  {
+	public void runOpMode() {
 		robot.init(hardwareMap);
 
 		// Send telemetry message to signify robot waiting;
@@ -40,28 +40,28 @@ public class blueFar  extends LinearOpMode {
 		Lift lift = new Lift(robot.elevator);
 		Intake intake = new Intake(robot.intake);
 		waitForStart();
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,520 , 0);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 520, 0);
 		//lift.init();
 		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,640,0);
-	//	while (runtime.seconds() > 2);
+		//	while (runtime.seconds() > 2);
 		{
 
-		//	lift.lift();
+			//	lift.lift();
 		}
-	//	while (runtime.seconds() > 3)
+		//	while (runtime.seconds() > 3)
 		{
-		//	intake.outtake();
+			//	intake.outtake();
 		}
 		//while (runtime.seconds() > 4)
 		{
-		//	intake.stop();
-		//		lift.lower();
+			//	intake.stop();
+			//		lift.lower();
 
 		}
-	//	while (runtime.seconds() > 5.5)
+		//	while (runtime.seconds() > 5.5)
 		{
 
-		//	lift.stop();
+			//	lift.stop();
 
 		}
 
@@ -77,7 +77,7 @@ public class blueFar  extends LinearOpMode {
 			//lift.lift();
 
 			//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
-		//	runtime.reset();
+			//	runtime.reset();
 			//while (runtime.seconds() < 2)
 			{
 				//intake.outtake();
@@ -85,22 +85,24 @@ public class blueFar  extends LinearOpMode {
 			///ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
 			//while (runtime.seconds() < 2)
 			{
-			//	lift.lower();
+				//	lift.lower();
 			}
 			//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-		//	ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,90);
+			//	ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,90);
 			//ad.gyroTurn(AutoDrive.TURN_SPEED,90);
 		}
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,1000,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED , 115);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
-	//	while (true) {
-			//telemetry.addData("left", robot.leftMotor.getCurrentPosition());
-			//telemetry.addData("right", robot.rightMotor.getCurrentPosition());
-			//telemetry.update();
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,1000,0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED , 115);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
+		while (true) {
+			telemetry.addData("left", robot.leftMotor.getCurrentPosition());
+			telemetry.addData("right", robot.rightMotor.getCurrentPosition());
+			telemetry.update();
 		}
 
 
 
+
+		}
 
 	}
