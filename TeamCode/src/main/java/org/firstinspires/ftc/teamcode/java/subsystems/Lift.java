@@ -26,7 +26,7 @@ public class Lift
 	}
 
 	/**
-	 * this function creates a alift from a motor
+	 * this function creates a a lift from a motor
 	 * @param lift the motor
 	 */
 	public Lift(DcMotor lift) {
@@ -48,9 +48,7 @@ public class Lift
 	public void init()
 	{
 		lift.setPower(0);
-
-
-		}
+	}
 
 	/**
 	 * this function lifts

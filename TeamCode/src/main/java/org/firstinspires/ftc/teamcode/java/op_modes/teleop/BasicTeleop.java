@@ -71,7 +71,7 @@ public class BasicTeleop extends LinearOpMode {
             }
 
             if (gamepad2.x) {
-                telemetry.speak("meow");
+                telemetry.speak("give me my pasta");
                 telemetry.update();
             }
 

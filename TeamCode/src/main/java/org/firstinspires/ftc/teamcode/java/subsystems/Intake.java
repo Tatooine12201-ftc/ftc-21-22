@@ -14,7 +14,7 @@ public class Intake
     RobotHardware robot;
     private final DcMotor intake;
 
-    private static final double INTAKE_SPEED = -0.5;
+    private static final double INTAKE_SPEED = -0.7;
     private static final double OUTTAKE_SPEED = 1;
 
     private static final double OPEN = 1;

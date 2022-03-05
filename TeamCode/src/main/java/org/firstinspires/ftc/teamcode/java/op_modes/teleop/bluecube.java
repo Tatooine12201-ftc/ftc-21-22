@@ -5,11 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
+
 
 @Autonomous(name = "bluecube", group = "auto")
 public class bluecube  extends LinearOpMode {
@@ -48,18 +48,7 @@ public class bluecube  extends LinearOpMode {
         intake.stop();
         lift.lower(2);
         lift.stop();
-        ad.gyroTurn(AutoDrive.TURN_SPEED , 115);
+        ad.gyroTurn(AutoDrive.TURN_SPEED , -115);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
-
-
-
     }
-
-    }
-
-
-
-
-
-
-
+}
