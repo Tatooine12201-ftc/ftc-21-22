@@ -41,6 +41,7 @@ public class blueduks  extends LinearOpMode {
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
         Carousel carousel = new Carousel(carouselMotor);
         Intake intake = new Intake(intakeMotor);
+        waitForStart();
         //Lift lift = new Lift(robot.elevator);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 550, 0);
         ad.gyroTurn(AutoDrive.TURN_SPEED, 35);

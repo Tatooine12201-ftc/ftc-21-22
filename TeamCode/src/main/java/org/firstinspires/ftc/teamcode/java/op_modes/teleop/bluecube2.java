@@ -42,14 +42,16 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
             Intake intake = new Intake(robot.intake);
             Lift lift = new Lift(robot.elevator);
+            waitForStart();
             ad.gyroDrive(AutoDrive.DRIVE_SPEED,560 , 0);
-            lift.lift(4);
+            lift.lift(3);
             intake.outtake(2);
             intake.stop();
-            lift.lower(2);
+            lift.lower(3);
             lift.stop();
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 0);
             ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 90);
         }
     }
 

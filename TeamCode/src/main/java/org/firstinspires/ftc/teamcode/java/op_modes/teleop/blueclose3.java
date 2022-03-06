@@ -48,10 +48,15 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             Intake intake = new Intake(robot.intake);
             waitForStart();
 
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 780,0);
-            ad.gyroTurn(AutoDrive.DRIVE_SPEED, -90);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 400,0);
-            intake.outtake(3);
+
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,570 , 0);
+            lift.lift(4);
+            intake.outtake(2);
+            intake.stop();
+            lift.lower(4);
+            lift.stop();
+            ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100 , -90);
         }
     }
 

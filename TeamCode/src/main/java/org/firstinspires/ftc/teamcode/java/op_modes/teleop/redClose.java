@@ -39,6 +39,7 @@ public class redClose  extends LinearOpMode {
 		robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
+
 		//Lift lift = new Lift(robot.elevator);
 		//Intake intake = new Intake(robot.intake);
 		waitForStart();
