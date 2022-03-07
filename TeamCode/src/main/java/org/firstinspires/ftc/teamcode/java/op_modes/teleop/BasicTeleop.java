@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-//import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 
 
 @TeleOp(name = "BasicTeleop")
