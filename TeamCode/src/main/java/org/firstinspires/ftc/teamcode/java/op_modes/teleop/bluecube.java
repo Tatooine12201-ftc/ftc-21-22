@@ -43,8 +43,9 @@ public class bluecube  extends LinearOpMode {
         Intake intake = new Intake(robot.intake);
         Lift lift = new Lift(robot.elevator);
         waitForStart();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,550 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
         lift.lift(2);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,380 , 0);
         intake.outtake(2);
         intake.stop();
         lift.lower(2);
