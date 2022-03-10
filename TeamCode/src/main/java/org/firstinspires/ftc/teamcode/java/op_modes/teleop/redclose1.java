@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -10,8 +9,11 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name = "redcube", group = "auto")
-public class redcube extends LinearOpMode {/* Declare OpMode members. */
+
+
+@Autonomous(name = "redclose1", group = "auto")
+public class redclose1 extends LinearOpMode {
+    /* Declare OpMode members. */
     RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
     /**
@@ -35,26 +37,21 @@ public class redcube extends LinearOpMode {/* Declare OpMode members. */
 
         robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        DcMotor carouselMotor = robot.carousel;
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-        Intake intake = new Intake(robot.intake);
+        DcMotor intakeMotor = robot.intake;
+        Intake intake = new Intake(intakeMotor);
         Lift lift = new Lift(robot.elevator);
+        //   Intake intake = new Intake(robot.intake);
         waitForStart();
+
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
         lift.lift(2);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,370 , 0);
-        intake.outtake(2);
+        intake.outtake(3);
         intake.stop();
         lift.lower(2);
         lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-200 , 0);
-        ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , -90);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,65);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100 , 90);
     }
-
 }
-
-
-
-

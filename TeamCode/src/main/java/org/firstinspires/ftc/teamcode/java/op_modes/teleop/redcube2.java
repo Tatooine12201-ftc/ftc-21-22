@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -10,8 +9,10 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name = "redcube", group = "auto")
-public class redcube extends LinearOpMode {/* Declare OpMode members. */
+//public class redcube2 {
+@Autonomous(name = "redcube2", group = "auto")
+public class redcube2 extends LinearOpMode {
+    /* Declare OpMode members. */
     RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
     /**
@@ -41,20 +42,15 @@ public class redcube extends LinearOpMode {/* Declare OpMode members. */
         Intake intake = new Intake(robot.intake);
         Lift lift = new Lift(robot.elevator);
         waitForStart();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
-        lift.lift(2);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,370 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,180 , 0);
+        lift.lift(3);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,380 , 0);
         intake.outtake(2);
         intake.stop();
-        lift.lower(2);
+        lift.lower(3);
         lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-200 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 0);
         ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , -90);
     }
-
 }
-
-
-
-

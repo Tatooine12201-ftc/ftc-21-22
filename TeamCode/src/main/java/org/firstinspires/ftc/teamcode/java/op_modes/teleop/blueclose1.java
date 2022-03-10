@@ -39,21 +39,22 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-            DcMotor intakeMotor = robot.intake;
-            Intake intake = new Intake(intakeMotor);
+            //DcMotor intakeMotor = robot.intake;
+            //Intake intake = new Intake(intakeMotor);
             Lift lift = new Lift(robot.elevator);
-         //   Intake intake = new Intake(robot.intake);
+            Intake intake = new Intake(robot.intake);
             waitForStart();
 
             ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
-            lift.lift(2);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,380 , 0);
-            intake.outtake(3);
-            intake.stop();
-            lift.lower(2);
+            lift.lift(1);
             lift.stop();
-            ad.gyroTurn(AutoDrive.TURN_SPEED,-65);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100 , -90);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,260 , 0);
+            intake.outtake(2);
+            intake.stop();
+            lift.lower(1);
+            lift.stop();
+            ad.gyroTurn(AutoDrive.TURN_SPEED,-59);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1130 , -90);
         }
     }
 

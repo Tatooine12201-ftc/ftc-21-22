@@ -57,7 +57,7 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             intake.stop();
             lift.lower(4);
             lift.stop();
-            ad.gyroTurn(AutoDrive.TURN_SPEED,-65);
+            ad.gyroTurn(AutoDrive.TURN_SPEED,-62);
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100 , -90);
         }
     }
