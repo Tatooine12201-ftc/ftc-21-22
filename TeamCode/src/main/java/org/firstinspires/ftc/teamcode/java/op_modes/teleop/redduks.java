@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
@@ -44,6 +45,8 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             Carousel carousel = new Carousel(carouselMotor);
             Intake intake = new Intake(intakeMotor);
             //Lift lift = new Lift(robot.elevator);
+            Capping capping=new Capping(robot.armServo, robot.cappingServo);
+            capping.lift();
             waitForStart();
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, 550, 0);
             ad.gyroTurn(AutoDrive.TURN_SPEED, -35);

@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
@@ -41,15 +42,17 @@ public class redcube2 extends LinearOpMode {
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
         Intake intake = new Intake(robot.intake);
         Lift lift = new Lift(robot.elevator);
+        Capping capping=new Capping(robot.armServo, robot.cappingServo);
+        capping.lift();
         waitForStart();
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,180 , 0);
         lift.lift(3);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,380 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,330 , 0);
         intake.outtake(2);
         intake.stop();
         lift.lower(3);
         lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-230 , 0);
         ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , -90);
     }

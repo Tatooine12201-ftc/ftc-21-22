@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
@@ -42,15 +43,18 @@ public class bluecube  extends LinearOpMode {
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
         Intake intake = new Intake(robot.intake);
         Lift lift = new Lift(robot.elevator);
+        Capping capping=new Capping(robot.armServo, robot.cappingServo);
+        capping.lift();
         waitForStart();
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
-        lift.lift(2);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,370 , 0);
+        lift.lift(1);
+        lift.stop();
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,310 , 0);
         intake.outtake(2);
         intake.stop();
-        lift.lower(2);
+        lift.lower(1);
         lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-200 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 0);
         ad.gyroTurn(AutoDrive.TURN_SPEED,90);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 90);
     }

@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
@@ -42,16 +43,18 @@ public class redclose1 extends LinearOpMode {
         Intake intake = new Intake(intakeMotor);
         Lift lift = new Lift(robot.elevator);
         //   Intake intake = new Intake(robot.intake);
+        Capping capping=new Capping(robot.armServo, robot.cappingServo);
+        capping.lift();
         waitForStart();
 
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
         lift.lift(2);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,370 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,310 , 0);
         intake.outtake(3);
         intake.stop();
         lift.lower(2);
         lift.stop();
-        ad.gyroTurn(AutoDrive.TURN_SPEED,65);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1100 , 90);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,62);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1120 , 90);
     }
 }

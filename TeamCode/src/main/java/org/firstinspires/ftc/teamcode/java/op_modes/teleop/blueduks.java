@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
@@ -41,6 +42,8 @@ public class blueduks  extends LinearOpMode {
         AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
         Carousel carousel = new Carousel(carouselMotor);
         Intake intake = new Intake(intakeMotor);
+        Capping capping=new Capping(robot.armServo, robot.cappingServo);
+        capping.lift();
         waitForStart();
         //Lift lift = new Lift(robot.elevator);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 550, 0);

@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
@@ -43,6 +44,8 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             //Intake intake = new Intake(intakeMotor);
             Lift lift = new Lift(robot.elevator);
             Intake intake = new Intake(robot.intake);
+            Capping capping=new Capping(robot.armServo, robot.cappingServo);
+            capping.lift();
             waitForStart();
 
             ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
@@ -54,7 +57,7 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             lift.lower(1);
             lift.stop();
             ad.gyroTurn(AutoDrive.TURN_SPEED,-59);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1140 , -90);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1120 , -90);
         }
     }
 

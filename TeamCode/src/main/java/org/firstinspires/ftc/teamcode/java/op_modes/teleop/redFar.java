@@ -7,6 +7,7 @@ package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 		import com.qualcomm.robotcore.hardware.DcMotor;
 		import com.qualcomm.robotcore.util.ElapsedTime;
 
+		import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 		import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 		import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 		import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
@@ -41,6 +42,8 @@ public class redFar  extends LinearOpMode {
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
 		//Lift lift = new Lift(robot.elevator);
 		//Intake intake = new Intake(robot.intake);
+		Capping capping=new Capping(robot.armServo, robot.cappingServo);
+		capping.lift();
 		waitForStart();
 		//lift.init();
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,450,0);
