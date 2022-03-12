@@ -42,8 +42,8 @@ public class Capping
     public double pos = 0;
 
     private boolean isOpen = false;
-   // private boolean isBeay = false;
-   private boolean isBeay = true;
+    private boolean isBeay = false;
+   //private boolean isBeay = true;
 
     public boolean isOpen() {
         return isOpen;
@@ -72,14 +72,14 @@ public class Capping
     public void changePosition(){
         if (isOpen ){
             isBeay = false;
-            //close();
-            open();
+            close();
+
         }
         else if (!isOpen  )
         {
             isBeay = true;
-            //open();
-            close();
+            open();
+
         }
         else{
             isBeay = true;
@@ -113,7 +113,7 @@ public class Capping
     public void lift(){
         pos = OPEN_ARM;
         arm.setPosition(pos);
-        close ();
+        open();
     }
 
     public void lower(){
