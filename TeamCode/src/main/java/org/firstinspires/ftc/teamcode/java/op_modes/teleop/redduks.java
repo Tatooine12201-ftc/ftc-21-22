@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
+import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
@@ -46,10 +47,11 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             Intake intake = new Intake(intakeMotor);
             //Lift lift = new Lift(robot.elevator);
             Capping capping=new Capping(robot.armServo, robot.cappingServo);
+            Lift lift = new Lift(robot.elevator);
             capping.lift();
             waitForStart();
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, 550, 0);
-            ad.gyroTurn(AutoDrive.TURN_SPEED, -35);
+            ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, -670, 0);
 
             carousel.changeDirection();
@@ -57,14 +59,16 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
             carousel.stop();
 
-            ad.gyroTurn(AutoDrive.TURN_SPEED, 40);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 590, 0);
-            ad.gyroTurn(AutoDrive.TURN_SPEED, -90);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 270, 0);
+            ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 780, 0);
+            ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 420, 0);
+            lift.lift(1);
             intake.outtake(3);
         }
 
     }
+
 
 
 

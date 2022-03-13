@@ -49,33 +49,33 @@ public class bluecyc extends LinearOpMode {
 
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
         lift.lift(2);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,380 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,360 , 0);
         intake.outtake(2);
         intake.stop();
         lift.lower(4);
         lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, -220 , 0);
-        ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, -200 , 0);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1570 , 90);
 
-        ad.gyroTurn(AutoDrive.TURN_SPEED,-80);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,100 , 0);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,80);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,90 , 0);
         intake.intake(3);
         intake.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100 , 0);
-        ad.gyroTurn(AutoDrive.TURN_SPEED,80);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1600 , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-90 , 0);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,-80);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1570 , 90);
         ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 220 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 200 , 0);
         lift.lift(4);
         intake.outtake(2);
         intake.stop();
         lift.lower(4);
         lift.stop();
 
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, -220 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, -200 , 0);
         ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1570 , 90);
 
     }
 }

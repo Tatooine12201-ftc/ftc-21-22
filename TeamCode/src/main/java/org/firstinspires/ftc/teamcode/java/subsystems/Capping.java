@@ -134,7 +134,5 @@ public class Capping
         isBeay =false;
     }
 
-    public void setBeay(boolean beay) {
-        isBeay = beay;
-    }
+
 }

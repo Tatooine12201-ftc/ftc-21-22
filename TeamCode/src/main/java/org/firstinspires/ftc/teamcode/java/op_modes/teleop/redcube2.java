@@ -46,13 +46,13 @@ public class redcube2 extends LinearOpMode {
         capping.lift();
         waitForStart();
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,180 , 0);
-        lift.lift(3);
+        lift.lift(2);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,330 , 0);
         intake.outtake(2);
         intake.stop();
         lift.lower(3);
         lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-230 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 0);
         ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , -90);
     }

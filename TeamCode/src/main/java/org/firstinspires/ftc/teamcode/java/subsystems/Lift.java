@@ -14,7 +14,7 @@ public class Lift
 	private DcMotor lift;
 
 	private static double LIFTING_SPEED = 1;
-	private static double LOWERING_SPEED = -1;
+	private static double LOWERING_SPEED = -0.7;
 
 	/**
 	 * this function creates anew lift
@@ -109,6 +109,8 @@ public class Lift
 	public void stop() {
 		lift.setPower(0);
 	}
+
+
 
 
 

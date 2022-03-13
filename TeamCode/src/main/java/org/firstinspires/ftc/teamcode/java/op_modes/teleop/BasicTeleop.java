@@ -44,11 +44,11 @@ public class BasicTeleop extends LinearOpMode {
         Intake intake = new Intake(intakeMotor);
         Capping capping = new Capping(arm, cappingServo);
         // creating an array for the motor speeds
-        double[] motorSpeeds = new double[2];
-        double max =0;
+
         capping.lift();
         waitForStart();
-
+        double[] motorSpeeds = new double[2];
+        double max =1;
 
         while (opModeIsActive()) {
             double drive = -gamepad1.left_stick_y;

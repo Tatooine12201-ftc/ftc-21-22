@@ -40,17 +40,19 @@ public class redClose  extends LinearOpMode {
 		robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-
+		Lift lift = new Lift(robot.elevator);
 		//Lift lift = new Lift(robot.elevator);
-		//Intake intake = new Intake(robot.intake);
+		Intake intake = new Intake(robot.intake);
 		Capping capping=new Capping(robot.armServo, robot.cappingServo);
 		capping.lift();
 		waitForStart();
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 780,0);
+		ad.gyroTurn(AutoDrive.DRIVE_SPEED, 90);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 400,0);
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 720,0);
-		ad.gyroTurn(AutoDrive.DRIVE_SPEED, -90);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -550,0);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 5,0);
+		lift.lift(1);
+		lift.stop();
+		intake.outtake(3);
 }
 }
 
