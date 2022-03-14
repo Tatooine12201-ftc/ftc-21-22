@@ -54,7 +54,7 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             ad.gyroTurn(AutoDrive.TURN_SPEED, -35);
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, -380, 0);
 
-            carousel.changeDirection();
+            //carousel.changeDirection();
             carousel.spin(5);
 
             carousel.stop();
