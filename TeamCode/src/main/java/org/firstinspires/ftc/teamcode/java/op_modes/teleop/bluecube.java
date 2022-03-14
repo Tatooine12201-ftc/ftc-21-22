@@ -47,23 +47,14 @@ public class bluecube  extends LinearOpMode {
         capping.lift();
         waitForStart();
 
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 ,0 );
         lift.lift(2);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,310 , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,305 , 0);
         intake.outtake(2);
         intake.stop();
         lift.lower(1);
         lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 90);
-
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
-        lift.lift(2);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,310 , 0);
-        intake.outtake(2);
-        intake.stop();
-        lift.lower(3);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 0);
-
         ad.gyroTurn(AutoDrive.TURN_SPEED,90);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , 90);
     }
