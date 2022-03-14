@@ -50,7 +50,7 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             lift.lift(2);
             ad.gyroDrive(AutoDrive.DRIVE_SPEED,270 , 0);
             intake.outtake(2);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100 , 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,-70 , 0);
             intake.stop();
             lift.lower(3);
             lift.stop();
