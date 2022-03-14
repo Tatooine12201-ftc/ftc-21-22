@@ -52,16 +52,18 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
 
             ad.gyroDrive(AutoDrive.DRIVE_SPEED,200 , 0);
-            lift.lift(3);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,280 , 0);
+            lift.lift(1);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,220 , 0);
             intake.outtake(2);
             intake.stop();
             lift.lower(4);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,-25 , 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,-220 , 0);
             ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, 730 , -90);
+            ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,110 , -90);
             ad.gyroTurn(AutoDrive.TURN_SPEED,90);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,7 , 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 630 , 90);
         }
     }
 
