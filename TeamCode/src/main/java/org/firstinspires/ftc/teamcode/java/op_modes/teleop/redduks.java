@@ -52,7 +52,7 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             waitForStart();
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
             ad.gyroTurn(AutoDrive.TURN_SPEED, -35);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, -380, 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, -400, 0);
 
             carousel.changeDirection();
             carousel.spin(5);
