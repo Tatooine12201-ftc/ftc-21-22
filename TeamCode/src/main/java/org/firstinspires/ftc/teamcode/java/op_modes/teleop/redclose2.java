@@ -51,17 +51,19 @@ public class redclose2 extends LinearOpMode {
         waitForStart();
 
 
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,140 , 0);
-        lift.lift(5);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,160 , 0);
+        lift.lift(2);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,305 , 0);
         intake.outtake(2);
         intake.stop();
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,-220 , 0);
-        lift.lower(5);
+        lift.lower(4);
         ad.gyroTurn(AutoDrive.TURN_SPEED,80);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1220 , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1200 , 90);
         ad.gyroTurn(AutoDrive.TURN_SPEED,1);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1220 , 90);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700, 90);
         ad.gyroTurn(AutoDrive.TURN_SPEED,1);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,-20 , 0);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,80);
     }
 }

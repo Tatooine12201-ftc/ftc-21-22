@@ -46,15 +46,13 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             Capping capping=new Capping(robot.armServo, robot.cappingServo);
             capping.lift();
             waitForStart();
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,140 , 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,160 , 0);
             lift.lift(2);
-
             ad.gyroDrive(AutoDrive.DRIVE_SPEED,305 , 0);
 
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,265 , 0);
 
             intake.outtake(2);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED,-70 , 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED,-90 , 0);
             intake.stop();
             lift.lower(3);
             //ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100 , 0);
