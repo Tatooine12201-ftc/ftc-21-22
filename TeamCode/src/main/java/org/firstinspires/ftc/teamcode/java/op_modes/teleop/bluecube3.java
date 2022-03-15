@@ -48,9 +48,9 @@ public class bluecube3  extends LinearOpMode {
         Capping capping=new Capping(robot.armServo, robot.cappingServo);
         capping.lift();
         waitForStart();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,190 , 0);
         lift.lift(5);
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,300 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,305 , 0);
         intake.outtake(2);
         intake.stop();
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,-100 , 0);

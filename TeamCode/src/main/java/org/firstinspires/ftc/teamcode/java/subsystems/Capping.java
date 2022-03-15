@@ -33,7 +33,7 @@ public class Capping
     }
 
     private static final double LIFTING_SPEED = 0.02;
-    private static final double LOWERING_SPEED = -0.02;
+    private static final double LOWERING_SPEED = -0.01;
 
     private static final double OPEN_ARM = 1;
     private static final double OPEN_CAPPING = 1;

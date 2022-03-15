@@ -44,15 +44,13 @@ public class redcube extends LinearOpMode {/* Declare OpMode members. */
         Capping capping=new Capping(robot.armServo, robot.cappingServo);
         capping.lift();
         waitForStart();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,170 , 0);
-        lift.lift(1);
-        lift.stop();
-        ad.gyroDrive(AutoDrive.DRIVE_SPEED,310 , 0);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,120 , 0);
+        lift.lift(3);
+        ad.gyroDrive(AutoDrive.DRIVE_SPEED,303 , 0);
         intake.outtake(2);
         intake.stop();
-        lift.lower(1);
-        lift.stop();
         ad.gyroDrive(AutoDrive.DRIVE_SPEED,-210 , 0);
+        lift.lower(3);
         ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1600 , -90);
     }
