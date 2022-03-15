@@ -50,7 +50,7 @@ public class redClose  extends LinearOpMode {
 		ad.gyroTurn(AutoDrive.DRIVE_SPEED, 90);
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 400,0);
 
-		lift.lift(1);
+		intake.stop();
 		intake.outtake(3);
 }
 }

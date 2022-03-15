@@ -62,5 +62,6 @@ public class redclose3 extends LinearOpMode {
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1220 , 90);
         ad.gyroTurn(AutoDrive.TURN_SPEED,1);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 1220 , 90);
+        ad.gyroTurn(AutoDrive.TURN_SPEED,1);
     }
 }

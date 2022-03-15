@@ -61,6 +61,8 @@ public class blueduks  extends LinearOpMode {
         //ad.gyroDrive(AutoDrive.DRIVE_SPEED, 50, 0);
         ad.gyroTurn(AutoDrive.TURN_SPEED, -1);
         ad.gyroDrive(AutoDrive.DRIVE_SPEED, 570, 0);
+        intake.outtake(3);
+        intake.stop();
        // lift.lift(1);
        // intake.outtake(3);
        // lift.lower(2);
