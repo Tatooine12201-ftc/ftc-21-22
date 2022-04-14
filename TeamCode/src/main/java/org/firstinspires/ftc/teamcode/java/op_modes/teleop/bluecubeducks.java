@@ -8,13 +8,14 @@ package org.firstinspires.ftc.teamcode.java.op_modes.teleop;
 		import com.qualcomm.robotcore.util.ElapsedTime;
 
 		import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
+		import org.firstinspires.ftc.teamcode.java.subsystems.Carousel;
 		import org.firstinspires.ftc.teamcode.java.subsystems.Intake;
 		import org.firstinspires.ftc.teamcode.java.subsystems.Lift;
 		import org.firstinspires.ftc.teamcode.java.util.AutoDrive;
 		import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
 
-@Autonomous(name = "red Far", group = "auto")
-public class redFar  extends LinearOpMode {
+@Autonomous(name = "blue cube ducks", group = "auto")
+public class bluecubeducks extends LinearOpMode {
 	/* Declare OpMode members. */
 	RobotHardware robot   = new RobotHardware();   // Use a Pushbot's hardware
 	private ElapsedTime runtime = new ElapsedTime();
@@ -40,15 +41,46 @@ public class redFar  extends LinearOpMode {
 		robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 		AutoDrive ad = new AutoDrive(robot.leftMotor, robot.rightMotor, robot.imu, telemetry);
-		//Lift lift = new Lift(robot.elevator);
-		//Intake intake = new Intake(robot.intake);
+		DcMotor carouselMotor = robot.carousel;
+		Lift lift = new Lift(robot.elevator);
+		Intake intake = new Intake(robot.intake);
+		Carousel carousel = new Carousel(carouselMotor);
 		Capping capping=new Capping(robot.armServo, robot.cappingServo);
 		capping.lift();
 		waitForStart();
+
+
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -480, 0);
+
+		//carousel.changeDirection();
+		carousel.spin(5);
+
+		carousel.stop();
+
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
+
+		lift.lift(5);
+
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 500, 0);
+
+		intake.outtake(2);
+		intake.stop();
+
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -50);
+
+		lift.lower(4);
+
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1000, 0);
+
+
+
+
 		//lift.init();
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,450,0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED,-155);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 2700,0);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,450,0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED,-155);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 2700,0);
 		//ad.gyroTurn(AutoDrive.TURN_SPEED,0);
 		//runtime.reset();
 		//while (runtime.seconds() < 2)
