@@ -47,7 +47,7 @@ public class redcubeducks extends LinearOpMode {
 		waitForStart();
 
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -45);
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -480, 0);
 
 		//carousel.changeDirection();
@@ -55,7 +55,9 @@ public class redcubeducks extends LinearOpMode {
 
 		carousel.stop();
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 50, 0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 10);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 400, 0);
 
 		lift.lift(5);
 
@@ -64,11 +66,11 @@ public class redcubeducks extends LinearOpMode {
 		intake.outtake(2);
 		intake.stop();
 
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -50);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -35);
 
 		lift.lower(4);
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1000, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1000, 90);
 
 
 
