@@ -50,55 +50,35 @@ public class bluecubeducks extends LinearOpMode {
 		waitForStart();
 
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -480, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 550, 0);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 40);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -695, 0);
 
-		//carousel.changeDirection();
+		carousel.changeDirection();
 		carousel.spin(5);
 
 		carousel.stop();
+
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
 
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
 
 		lift.lift(5);
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 500, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 570, 0);
 
 		intake.outtake(2);
 		intake.stop();
 
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -50);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 120);
 
 		lift.lower(4);
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1000, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -1000, -0.5);
 
 
 
 
-		//lift.init();
-		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,450,0);
-		//ad.gyroTurn(AutoDrive.TURN_SPEED,-155);
-		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 2700,0);
-		//ad.gyroTurn(AutoDrive.TURN_SPEED,0);
-		//runtime.reset();
-		//while (runtime.seconds() < 2)
-		//{
-		//	lift.lift();
-		//}
-		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 150 +(12*2*25.4),0);
-		//runtime.reset();
-		//while (runtime.seconds() < 2)
-		//{
-		//	intake.outtake();
-		//}
-		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *-1,0);
-		//while (runtime.seconds() < 2)
-		//{
-		//	lift.lower();
-		//}
-		//ad.gyroTurn(AutoDrive.TURN_SPEED,-90);
-		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, (150 +(12*2*25.4)) *2,-90);
+
 	}
 }
