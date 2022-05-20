@@ -52,38 +52,40 @@ public class bluecubeducks extends LinearOpMode {
 
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 550, 0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED, 40);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -695, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -675, 0);
+		//-695
 
 		carousel.changeDirection();
-		carousel.spin(5);
+		carousel.spin(3);
 
 		carousel.stop();
 
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -1);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -0.3);
 
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 730, 0);
 
 		//lift.lift(5);
 
-		ad.gyroTurn(AutoDrive.DRIVE_SPEED, 70);
+		ad.gyroTurn(AutoDrive.DRIVE_SPEED, 65);
 
 		//lift.lift(3);
 
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED,360,90);
 
-		lift.lift(3);
+		lift.lift(2);
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,350,90);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,490,90);
 
 		intake.outtake(2);
 		intake.stop();
 
-		ad.gyroDrive(AutoDrive.TURN_SPEED, -950,0);
+		ad.gyroDrive(AutoDrive.TURN_SPEED, -900,90);
 
-		lift.lower(4);
+		lift.lower(2);
 
-		ad.gyroTurn(AutoDrive.DRIVE_SPEED,-1 );
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED,100,0);
+		ad.gyroHold(AutoDrive.DRIVE_SPEED,-0.5,1 );
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED,-180,-1);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, -1);
 
 
 
