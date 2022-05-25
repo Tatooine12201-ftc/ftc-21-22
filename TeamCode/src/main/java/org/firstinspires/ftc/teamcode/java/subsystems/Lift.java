@@ -13,8 +13,8 @@ public class Lift
 	RobotHardware robot;
 	private DcMotor lift;
 
-	private static double LIFTING_SPEED = 1;
-	private static double LOWERING_SPEED = -0.5;
+	private static double LIFTING_SPEED =- 1;
+	private static double LOWERING_SPEED = 0.5;
 
 	/**
 	 * this function creates anew lift
@@ -54,14 +54,14 @@ public class Lift
 	 * this function lifts
 	 */
 	public void lift() {
-			 if( lift.getCurrentPosition()  < 1920)
+			 if( lift.getCurrentPosition()  > -5600)
 			 {
 				 lift.setPower(LIFTING_SPEED);
 			 }
 			 else {
 			 	stop();
 			 }
-			 //else  if (lift.getCurrentPosition()  < 10)
+			 //else  if (lift.getCurrentPosition()  < 10)<
 		//{  lift.setPower(0); }
 	}
 	public void lift(int sec){
@@ -77,7 +77,7 @@ public class Lift
 	 *  * this function outtakes
 	 */
 	public void lower() {
-		if(lift.getCurrentPosition() > 5) {
+		if(lift.getCurrentPosition() < 5126) {
 			lift.setPower(LOWERING_SPEED);
 		}
 		else {
