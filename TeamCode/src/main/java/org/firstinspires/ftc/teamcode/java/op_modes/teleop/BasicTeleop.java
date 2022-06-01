@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 public class BasicTeleop extends LinearOpMode {
 
     RobotHardware robot = new RobotHardware();
-    private final double MAX_SPEED = -1;
+    private final double MAX_SPEED = 1;
 
 
     @Override
