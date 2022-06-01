@@ -50,7 +50,7 @@ public class bluecubeducks extends LinearOpMode {
 		waitForStart();
 
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 550, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 530, 0);
 		ad.gyroTurn(AutoDrive.TURN_SPEED, 40);
 		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -675, 0);
 
@@ -62,11 +62,11 @@ public class bluecubeducks extends LinearOpMode {
 
 		ad.gyroTurn(AutoDrive.TURN_SPEED, -0.3);
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 730, 0);
+		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700, 0);
 
 		//lift.lift(5);
 
-		ad.gyroTurn(AutoDrive.DRIVE_SPEED, 65);
+		ad.gyroTurn(AutoDrive.TURN_SPEED, 50);
 
 		//lift.lift(3);
 

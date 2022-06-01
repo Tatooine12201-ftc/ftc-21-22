@@ -50,23 +50,23 @@ import org.firstinspires.ftc.teamcode.java.util.RobotHardware;
             Lift lift = new Lift(robot.elevator);
             capping.lift();
             waitForStart();
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
+            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 430, 0);
             ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
             ad.gyroDrive(AutoDrive.DRIVE_SPEED, -480, 0);
 
             //carousel.changeDirection();
-            carousel.spin(5);
+            carousel.spin(3);
 
             carousel.stop();
 
            ad.gyroTurn(AutoDrive.TURN_SPEED, 1);
            ad.gyroDrive(AutoDrive.DRIVE_SPEED, 500, 0);
            ad.gyroTurn(AutoDrive.TURN_SPEED, 90);
-           ad.gyroDrive(AutoDrive.DRIVE_SPEED, 70, 0);
-            ad.gyroDrive(AutoDrive.DRIVE_SPEED, -10, 0);
+           ad.gyroDrive(AutoDrive.DRIVE_SPEED, 68, 0);
+           // ad.gyroDrive(AutoDrive.DRIVE_SPEED, -0.5, 0);
          //   lift.lift(1);
-           intake.outtake(3);
-           intake.stop();
+          // intake.outtake(3);
+         //  intake.stop();
         }
 
     }

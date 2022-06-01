@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.java.subsystems.Capping;
 public class BasicTeleop extends LinearOpMode {
 
     RobotHardware robot = new RobotHardware();
-    private final double MAX_SPEED = 1;
+    private final double MAX_SPEED = -1;
 
 
     @Override
@@ -32,6 +32,8 @@ public class BasicTeleop extends LinearOpMode {
         // defining motors
         DcMotor leftMotor = robot.leftMotor;
         DcMotor rightMotor = robot.rightMotor;
+//      //  leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//       // rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         DcMotor elevaterMotor = robot.elevator;
         DcMotor carouselMotor = robot.carousel;
         DcMotor intakeMotor = robot.intake;
@@ -109,9 +111,11 @@ public class BasicTeleop extends LinearOpMode {
                 for (int i = 0; i < 2; i++) {
                     motorSpeeds[i] = motorSpeeds[i] / max;
                 }
-            }
+           }
 
             telemetry.addData("ticks", robot.elevator.getCurrentPosition());
+            telemetry.addData("rught", motorSpeeds[0]);
+            telemetry.addData("left", motorSpeeds[1]);
             telemetry.update();
                 // setting power to the motors based the va     lues of the speeds from the
                 // gamepad and max speed

@@ -46,56 +46,58 @@ public class redcubeducks extends LinearOpMode {
 		capping.lift();
 		waitForStart();
 
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, 0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -480, 0);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 530, 0);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, -40);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, -675, 0);
 
 
-		carousel.spin(2);
+		//carousel.changeDirection();
+		//carousel.spin(3);
 
-		carousel.stop();
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -0.1);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 930, 0);
-		ad.gyroTurn(AutoDrive.TURN_SPEED, -84);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, -90);
-	    lift.lift(2);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, 450, -90);
+		//carousel.stop();
 
-		intake.outtake(5);
-	    intake.stop();
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, 0.3);
 
-	  ad.gyroDrive(AutoDrive.DRIVE_SPEED, -850, -90);
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED, 700, 0);
 
-		lift.lower(3);
-    	ad.gyroTurn(AutoDrive.TURN_SPEED, -1);
-		ad.gyroDrive(AutoDrive.DRIVE_SPEED, -430, 0);
+		//lift.lift(5);
 
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, -50);
 
+		//lift.lift(3);
 
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,360,-90);
 
+		//lift.lift(2);
 
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,480,-90);
 
+		//intake.outtake(2);
+		//intake.stop();
 
+		//ad.gyroDrive(AutoDrive.TURN_SPEED, -900,-90);
 
+		//lift.lower(2);
 
-
-
-
-
-
-
+		//ad.gyroHold(AutoDrive.DRIVE_SPEED,0.5,1 );
+		//ad.gyroDrive(AutoDrive.DRIVE_SPEED,-250,1);
+		//ad.gyroTurn(AutoDrive.TURN_SPEED, 1);
 
 
 
-		//while (true) {
-		//telemetry.addData("left", robot.leftMotor.getCurrentPosition());
-			//telemetry.addData("right", robot.rightMotor.getCurrentPosition());
-			//telemetry.update();
+
+
+
+
+		while (true) {
+	telemetry.addData("left", robot.leftMotor.getCurrentPosition());
+			telemetry.addData("right", robot.rightMotor.getCurrentPosition());
+			telemetry.update();
 		}
 
 
 
 
 		}
-
+}
 
